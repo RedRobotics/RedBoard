@@ -4,15 +4,11 @@ import smbus
 import time
 import os
 
-# For ROCK64 use "bus = smbus.SMBus(0)"
 bus = smbus.SMBus(1)
 address = 0x48
 
 def reg():
-    bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])
-    
-
-    
+    bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])    
     return -1
 
 def readAdc_0():
@@ -58,7 +54,7 @@ volts = conversion / 2157.5 #  Through voltage divider
 if conversion > 65530:
 	volts = 0.00
 
-print (conversion)
+#print (conversion)
 print ('Voltage =',round(volts,2))
 
     
