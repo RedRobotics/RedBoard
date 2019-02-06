@@ -53,7 +53,7 @@ pi.set_PWM_frequency(pwmb, 100)
 pi.set_mode(servo_0, pigpio.OUTPUT)
 pi.set_mode(servo_1, pigpio.OUTPUT)
 
-print("Redboard Library V1.22 loaded")
+print("Redboard Library V2 loaded")
 
 #-----------------------------------------------------
 
