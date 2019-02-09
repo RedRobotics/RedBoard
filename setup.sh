@@ -11,13 +11,13 @@ sudo apt-get install python3-dev python-dev python-pip python3-pip joystick -y
 sudo pip3 install evdev
 sudo pip install evdev
 
+sudo apt-get install python-smbus python3-smbus i2c-tools
+
 sudo apt-get install build-essential git -y
 
 sudo rm -rf RedBoard
 git clone https://github.com/RedRobotics/RedBoard.git
 cd Red
-#cp * /home/pi
-
 cd
 
 if grep -Fq "pigpiod" "/etc/rc.local"
