@@ -1,9 +1,6 @@
-#Red Robotics RedBoard V1.2 set up script
+#Red Robotics RedBoard V2 set up script  
 
-#Neopixel set up taken from the original Adafruit tutorial: 
-#https://learn.adafruit.com/neopixels-on-raspberry-pi/software  
-
-#Uses the pigpio library: http://abyz.co.uk/rpi/pigpio/  
+#Uses the pigpio library: http://abyz.me.uk/rpi/pigpio/  
 
 
 cd
@@ -15,21 +12,12 @@ sudo apt-get install python-smbus python3-smbus i2c-tools
 
 sudo apt-get install build-essential git -y
 
+sudo apt-get install pigpio python-pigpio python3-pigpio
+
 sudo rm -rf RedBoard
 git clone https://github.com/RedRobotics/RedBoard.git
-cd Red
-cd
 
-if grep -Fq "pigpiod" "/etc/rc.local"
-then
-    echo "Pigpio already installed"
-else
-    echo "Installing shutdown script"
-    cd
-    sudo apt-get install pigpio python-pigpio python3-pigpio
-    sudo sed -i -e '$i #start Pigpio deamon\nsudo pigpiod\n' /etc/rc.local
-fi
-
+sudo systemctl enable pigpiod
 
 if grep -Fq "reset_shutdown.py" "/etc/rc.local"
 then
