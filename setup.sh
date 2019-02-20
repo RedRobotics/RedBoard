@@ -41,12 +41,17 @@ else
     sudo sed -i -e '$i #start System Monitor\nsudo python3 /home/pi/RedBoard/ip.py; sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
 fi
 
-while true; do
+
+
+#while true; do
     read -p"Reboot now?" yn
     case $yn in
-        [Yy]* ) echo "rebooting now";sudo reboot;;
-        [Nn]*  ) exit;;
-        *  ) echo "Please enter yes or no.";;
+        [Yy]*) 
+                echo "rebooting now";sudo reboot;;
+        [Nn]*) 
+                exit;;
+        *) 
+                echo "Please enter yes or no.";;
     esac
-
+done
 
