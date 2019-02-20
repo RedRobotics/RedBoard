@@ -51,7 +51,7 @@ if [ "x$yesno" = "xy" ];
 then
     echo 'Rebooting'
     sudo reboot
-elif [ "x$yesno" = "xn" ]; 
+elif [ "x$yesno" = "xn" ]
 then
     echo 'No'
 else
