@@ -51,6 +51,8 @@ if [ "x$yesno" = "xy" ];
 then
     echo 'Rebooting'
     sudo reboot
-else    
+elif [ "x$yesno" = "xn" ];   
     echo 'No'
+else
+    echo "Enter y or n"
 fi    
