@@ -13,6 +13,17 @@ blueled = 19
 
 pi = pigpio.pi()
 
+def whiteLed_on():
+	pi.write(redled, 1)
+	pi.write(greenled, 1)
+	pi.write(blueled, 1)
+
+def whiteLed_off():
+	pi.write(redled, 0)
+	pi.write(greenled, 0)
+	pi.write(blueled, 0)
+
+
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
@@ -21,17 +32,19 @@ try:
     s.close()
 except socket.error:
     print("No IP address found!")
-    white(100)
+    whiteLed_on()
     time.sleep(1)
-    clear()
+    whiteLed_off()
     time.sleep(1)
-    white(100)
+    whiteLed_on()
     time.sleep(1)
-    clear()
+    whiteLed_off()
     exit()
 
 
 #ip = "10.110.0.030"  # Test IP address
+
+whiteLed_off()
 
 print ("IP address:",ip)
 
@@ -59,16 +72,6 @@ elif lastNum == 3:
     ip_green = int(ip[l-1])
     ip_blue = int(ip[l])     
     
-    
-else:    
-    ip_red = 0
-    ip_green = 0
-    ip_blue = 0
-    print ("IP address not found!")
-    white(127)  # Neopixel white half brightness
-    time.sleep(1)
-    clear()  
-
 
 #print (ip_red, ip_green, ip_blue)
         
