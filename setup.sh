@@ -12,21 +12,22 @@ sudo apt-get install python-smbus python3-smbus i2c-tools
 
 sudo apt-get install build-essential git -y
 
-sudo apt-get install pigpio python-pigpio python3-pigpio
 
 
+sudo rm -rf RedBoard
+git clone https://github.com/RedRobotics/RedBoard.git
+#wget https://github.com/RedRobotics/RedBoard/archive/master.zip
 
-#sudo systemctl enable pigpiod
+
 
 if grep -Fq "pigpiod" "/etc/rc.local"
 then
     echo "Pigpio already installed"
 else
-    echo "Installing shutdown script"
+    echo "Installing Pigpio"
     cd
-    sudo rm -rf RedBoard
-    git clone https://github.com/RedRobotics/RedBoard.git
-    #wget https://github.com/RedRobotics/RedBoard/archive/master.zip
+    sudo apt-get install pigpio python-pigpio python3-pigpio
+    #sudo systemctl enable pigpiod  # This works better in rc.local
     sudo sed -i -e '$i #start Pigpio deamon\nsudo pigpiod\n' /etc/rc.local
 fi
 
@@ -40,5 +41,14 @@ else
     sudo sed -i -e '$i #start reset_shutdown script\nsudo python3 /home/pi/RedBoard/ip.py; sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
 fi
 
-#sudo reboot
+while true; do
+    read -p'Reboot now?' yn
+
+    case $yn in
+        [Yy]* ) echo 'rebooting now';sudo reboot;;
+        [Nn]*  ) exit;;
+        *  ) echo 'Please enter yes or no.';;
+    esac
+done
+
 
