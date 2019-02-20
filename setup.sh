@@ -33,12 +33,12 @@ fi
 
 
 
-if grep -Fq "reset_shutdown.py" "/etc/rc.local"
+if grep -Fq "system_monitor.py" "/etc/rc.local"
 then
-    echo "Shutdown script already running"
+    echo "System Monitor already running"
 else
-    echo "Installing shutdown script" 
-    sudo sed -i -e '$i #start reset_shutdown script\nsudo python3 /home/pi/RedBoard/ip.py; sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
+    echo "Installing System Monitor" 
+    sudo sed -i -e '$i #start System Monitor\nsudo python3 /home/pi/RedBoard/ip.py; sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
 fi
 
 while true; do
