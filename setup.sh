@@ -41,13 +41,16 @@ else
     sudo sed -i -e '$i #start System Monitor\nsudo python3 /home/pi/RedBoard/ip.py; sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
 fi
 
-
+echo
+echo "Install Finished"
+echo
 echo -n "Reboot now?"
 read yesno < /dev/tty
 
 if [ "x$yesno" = "xy" ];
 then
     echo 'Rebooting'
+    sudo reboot
 else    
     echo 'No'
 fi    
