@@ -47,7 +47,7 @@ while true; do
     case $yn in
         [Yy]* ) echo 'rebooting now';sudo reboot;;
         [Nn]*  ) exit;;
-        *  ) echo 'Please enter yes or no.';;
+        #*  ) echo 'Please enter yes or no.';;
     esac
 done
 
