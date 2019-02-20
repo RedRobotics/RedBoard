@@ -42,11 +42,11 @@ else
 fi
 
 while true; do
-    read -p'Reboot now?' yn
+    read -p"Reboot now?" yn
     case $yn in
-        [Yy]* ) echo 'rebooting now';sudo reboot;;
+        [Yy]* ) echo "rebooting now";sudo reboot;;
         [Nn]*  ) exit;;
-        *  ) echo 'Please enter yes or no.';;
+        *  ) echo "Please enter yes or no.";;
     esac
 done
 
