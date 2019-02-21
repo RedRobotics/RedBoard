@@ -28,7 +28,7 @@ pi.set_pull_up_down(button, pigpio.PUD_UP)
 pi.set_mode(redLed, pigpio.OUTPUT)
 pi.write(redLed, True) 
 
-print ("Shutdown Script Running!") 
+print ("Shutdown Script Running") 
 
 while True:
     try:
