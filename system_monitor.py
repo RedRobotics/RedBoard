@@ -85,8 +85,8 @@ def ledOff():
 #Read the Battery Voltage 
 volts_0 = readAdc()
 
+print('')
 print ("System Monitor Running...")
-print (volts_0)
 print ('Battery Voltage =',round(volts_0,2)) 
 
 startTime = time.time()
@@ -105,6 +105,7 @@ while True:
         if buttonPress == False:
             if volts_0 >= 11.5:
                 pi.write(greenLed, 1)
+                pi.write(redLed, 0)
 
             elif volts_0 >= 10.8 and volts_0 < 11.5:
                 pi.write(redLed, 1)
@@ -112,8 +113,9 @@ while True:
 
             elif volts_0 < 10.8:
                 pi.write(redLed, 1)
+                pi.write(greenLed, 0)
 
-        #print ('Battery Voltage =',round(volts_0,2)) 
+        print ('Battery Voltage =',round(volts_0,2)) 
         sTime = time.time()
 
 #--------------------------------------------------------
@@ -146,7 +148,7 @@ while True:
             ledOff()
             time.sleep(0.5)
             #os.system('sudo shutdown -h now')
-            exit()
+            #exit()
 
         startTime = time.time()
 
