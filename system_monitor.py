@@ -23,7 +23,7 @@ buttonStart = 0
 buttonElaspedTime = 0
 lowCount = 0
 toggle = False
-
+volts_0 = 0.001
 
 lowBatWarn = 10  # Low battery warning voltage
 shutDown = 9.6  # Low battery shutdown voltage
@@ -46,23 +46,26 @@ pi.set_mode(blueLed, pigpio.OUTPUT)
 #pi.write(redLed, True) 
 
 
-'''
 def readAdc():
-    bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])
-    time.sleep(0.1)
-    adc = bus.read_i2c_block_data(address,0x00,2)
-    return adc
-'''
+    try:
+        bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])
+        time.sleep(0.1)
+        voltage0 = bus.read_i2c_block_data(address,0x00,2)
+        conversion_0 = (voltage0[1])+(voltage0[0]<<8)
+        adc = conversion_0 / 2157.5 #  Battery voltage through voltage divider
+        return adc
 
-def readAdc():
-    bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])
-    time.sleep(0.1)
-    voltage0 = bus.read_i2c_block_data(address,0x00,2)
-    conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-    adc = conversion_0 / 2157.5 #  Battery voltage through voltage divider
-
-    return adc
-    
+    except IOError:
+        print('')
+        print('')
+        print('I2C device not detected!')
+        print('Have you enabled I2C in raspi-config?')
+        print('')
+        print('Battery monitor not running')   
+        print('')
+        # Run the reset_shutdown program instead so the button still works     
+        os.system('sudo python3 /home/pi/RedBoard/reset_shutdown.py&')
+        exit()
 
 def flashLed():
     toggle = False
@@ -83,6 +86,7 @@ def ledOff():
 volts_0 = readAdc()
 
 print ("System Monitor Running...")
+print (volts_0)
 print ('Battery Voltage =',round(volts_0,2)) 
 
 startTime = time.time()
@@ -109,7 +113,7 @@ while True:
             elif volts_0 < 10.8:
                 pi.write(redLed, 1)
 
-        print ('Battery Voltage =',round(volts_0,2)) 
+        #print ('Battery Voltage =',round(volts_0,2)) 
         sTime = time.time()
 
 #--------------------------------------------------------
@@ -188,14 +192,14 @@ while True:
           if buttonElaspedTime <1:
               ledOff()  
               print("Show IP")  
-              os.system('sudo python3 /home/pi/ip.py')  # Show IP address on neopixel 
+              os.system('sudo python3 /home/pi/RedBoard/ip.py')  # Show IP address on neopixel 
               time.sleep(0.5)    
           
           if buttonElaspedTime >1 and buttonElaspedTime <4:
               print("Reboot")  
               ledOff()   
               time.sleep(0.5)
-              #os.system('sudo shutdown -r now')  # Reboot 
+              os.system('sudo shutdown -r now')  # Reboot 
               time.sleep(1)
               print("Exit") 
               exit()
@@ -212,7 +216,7 @@ while True:
           pi.write(redLed, 1)  
            
           time.sleep(0.5)   
-          #os.system('sudo shutdown -h now')  # Shutdown
+          os.system('sudo shutdown -h now')  # Shutdown
           time.sleep(1) 
           ledOff()   
           print("Exit") 
