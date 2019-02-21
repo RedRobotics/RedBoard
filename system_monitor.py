@@ -25,8 +25,8 @@ lowCount = 0
 toggle = False
 volts_0 = 0.001
 
-lowBatWarn = 10  # Low battery warning voltage
-shutDown = 9.6  # Low battery shutdown voltage
+#lowBatWarn = 10  # Low battery warning voltage
+#shutDown = 9.6  # Low battery shutdown voltage
 
 
 #connect to pigpiod daemon
@@ -80,6 +80,21 @@ def ledOff():
     pi.write(blueLed, 0)
 
 
+def bat_level():
+
+    # Show battery level on RGB Led 
+    if volts_0 >= 11.5:
+        pi.write(greenLed, 1)
+        pi.write(redLed, 0)
+
+    elif volts_0 >= 10.8 and volts_0 < 11.5:
+        pi.write(redLed, 1)
+        pi.write(greenLed, 1)
+
+    elif volts_0 < 10.8:
+        pi.write(redLed, 1)
+        pi.write(greenLed, 0)
+
 
 
 #Read the Battery Voltage 
@@ -88,6 +103,17 @@ volts_0 = readAdc()
 print('')
 print ("System Monitor Running...")
 print ('Battery Voltage =',round(volts_0,2)) 
+bat_level()  # Show battery level on RGB Led 
+
+if volts_0 >= 9:
+    print ('3s lipo battery detected')
+    lowBatWarn = 10  # Low battery warning voltage
+    shutDown = 9.6  # Low battery shutdown voltage
+else: 
+    print ('2s lipo battery detected') 
+    lowBatWarn = 10  # Low battery warning voltage
+    shutDown = 9.6  # Low battery shutdown voltage
+
 
 startTime = time.time()
 sTime = time.time()
@@ -95,27 +121,24 @@ sTime = time.time()
 while True:
     try:
 
+      # Show battery level on RGB Led 
+      # But not if you're pressing the button
+      # Or the low battery warning is flashing    
+      if buttonPress == False and volts_0 > lowBatWarn:  
+            bat_level()  
+
+
       # Show the battery level on the RGB Led every 10 seconds 
       time1 = time.time()
       timeE = time1 - sTime
       if timeE > 10:  
         #print('10 seconds')
 
-        # Show battery level on RGB Led 
-        if buttonPress == False:
-            if volts_0 >= 11.5:
-                pi.write(greenLed, 1)
-                pi.write(redLed, 0)
+        ## Show battery level on RGB Led 
+        #if buttonPress == False:  # But not if you're pressing the button
+            #bat_level()
 
-            elif volts_0 >= 10.8 and volts_0 < 11.5:
-                pi.write(redLed, 1)
-                pi.write(greenLed, 1)
-
-            elif volts_0 < 10.8:
-                pi.write(redLed, 1)
-                pi.write(greenLed, 0)
-
-        print ('Battery Voltage =',round(volts_0,2)) 
+        #print ('Battery Voltage =',round(volts_0,2)) 
         sTime = time.time()
 
 #--------------------------------------------------------
@@ -152,19 +175,15 @@ while True:
 
         startTime = time.time()
 
-
-
 #----------------------------------------------------------------------------       
 
       time.sleep(0.1)
-        
-
 
       if volts_0 < lowBatWarn:
         #print('Low battery warning!')  
         toggle = not toggle
+        ledOff()
         pi.write(redLed, toggle)  
-
 
   
       # Time the button press
@@ -194,7 +213,7 @@ while True:
           if buttonElaspedTime <1:
               ledOff()  
               print("Show IP")  
-              os.system('sudo python3 /home/pi/RedBoard/ip.py')  # Show IP address on neopixel 
+              os.system('sudo python3 /home/pi/RedBoard/ip.py')  # Show IP address on LED 
               time.sleep(0.5)    
           
           if buttonElaspedTime >1 and buttonElaspedTime <4:
