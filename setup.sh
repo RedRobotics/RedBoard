@@ -58,4 +58,5 @@ else
     echo "Enter y or n"
 fi    
 
+cd RedBoard
 ./prompt.sh
