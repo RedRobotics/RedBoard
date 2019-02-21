@@ -57,3 +57,5 @@ then
 else
     echo "Enter y or n"
 fi    
+
+/home/pi/RedBoard/prompt.sh
