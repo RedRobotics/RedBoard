@@ -1,10 +1,13 @@
 # This program sits in the background monitoring the switch connected to GPIO 17 of your RPi.
 # Works with RedRobotics controller boards.
-# A short press and release of the button runs the 'IP.py' program.
+# A short press and release of the button runs the 'IP.py' program (Shows your IP address). 
 # A medium press (between 1 -4 seconds) resets the RPi.
 # A long press shuts down the Pi.
+# Shows the battery level on the on-board RGB led
+# Green = full, Yellow = medium, Red = low
+# Can shut down the Pi when the battery is low
 
-# Author: Neil Lambeth. neil@redrobotics.co.uk @NeilRedRobotics
+# Author: Neil Lambeth. neil@redrobotics.co.uk @NeilRedRobotics. 5/3/2019
 
 from __future__ import print_function  # Make print work with python 2 & 3
 import time
@@ -33,8 +36,22 @@ volts_0 = 0.001
 pi = pigpio.pi()
 
 #Setup I2C
-bus = smbus.SMBus(1)
-address = 0x48
+try:
+    bus = smbus.SMBus(1)
+    address = 0x48
+except FileNotFoundError: 
+    print('')
+    print('')
+    print('I2C not enabled!')
+    print('Enable I2C in raspi-config')
+    print('')
+    print('Battery monitor not running')   
+    print('')
+
+    # Run the reset_shutdown program instead so the button still works     
+    os.system('sudo python3 /home/pi/RedBoard/reset_shutdown.py&')
+    exit()
+
 
 # Setup GPIO
 pi.set_mode(button, pigpio.INPUT)
@@ -45,6 +62,8 @@ pi.set_mode(greenLed, pigpio.OUTPUT)
 pi.set_mode(blueLed, pigpio.OUTPUT)
 #pi.write(redLed, True) 
 
+def test_i2c():
+    bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])
 
 def readAdc():
     try:
@@ -55,17 +74,11 @@ def readAdc():
         adc = conversion_0 / 2157.5 #  Battery voltage through voltage divider
         return adc
 
+
     except IOError:
-        print('')
-        print('')
-        print('I2C device not detected!')
-        print('Have you enabled I2C in raspi-config?')
-        print('')
-        print('Battery monitor not running')   
-        print('')
-        # Run the reset_shutdown program instead so the button still works     
-        os.system('sudo python3 /home/pi/RedBoard/reset_shutdown.py&')
-        exit()
+        os.system('i2cdetect -y 1')
+        
+        
 
 def flashLed():
     toggle = False
@@ -83,37 +96,61 @@ def ledOff():
 def bat_level():
 
     # Show battery level on RGB Led 
-    if volts_0 >= 11.5:
+    if volts_0 >= batHigh:
         pi.write(greenLed, 1)
         pi.write(redLed, 0)
 
-    elif volts_0 >= 10.8 and volts_0 < 11.5:
+    elif volts_0 >= batMid and volts_0 < BatHigh:
         pi.write(redLed, 1)
         pi.write(greenLed, 1)
 
-    elif volts_0 < 10.8:
+    elif volts_0 < batMid:
         pi.write(redLed, 1)
         pi.write(greenLed, 0)
 
 
 
+try:
+    print('')
+    print('')
+    os.system('i2cdetect -y 1')
+    test_i2c()
+
+except IOError:
+    print('')
+    print('')
+    print('I2C device not detected!')
+    print('')
+    print('Battery monitor not running')   
+    print('')
+
+    # Run the reset_shutdown program instead so the button still works     
+    os.system('sudo python3 /home/pi/RedBoard/reset_shutdown.py&')
+    exit()
+
 #Read the Battery Voltage 
 volts_0 = readAdc()
 
 print('')
+
 print ("System Monitor Running...")
-print ('Battery Voltage =',round(volts_0,2)) 
-bat_level()  # Show battery level on RGB Led 
+
 
 if volts_0 >= 9:
     print ('3s lipo battery detected')
+    batHigh = 11.5
+    batMid = 10.8
     lowBatWarn = 10  # Low battery warning voltage
     shutDown = 9.6  # Low battery shutdown voltage
 else: 
-    print ('2s lipo battery detected') 
-    lowBatWarn = 10  # Low battery warning voltage
-    shutDown = 9.6  # Low battery shutdown voltage
+    print ('2s lipo battery detected')
+    batHigh = 7.4
+    batMid = 7 
+    lowBatWarn = 6.8  # Low battery warning voltage
+    shutDown = 6.5  # Low battery shutdown voltage
 
+bat_level()  # Show battery level on RGB Led 
+print ('Battery Voltage =',round(volts_0,2))
 
 startTime = time.time()
 sTime = time.time()
@@ -133,10 +170,6 @@ while True:
       timeE = time1 - sTime
       if timeE > 10:  
         #print('10 seconds')
-
-        ## Show battery level on RGB Led 
-        #if buttonPress == False:  # But not if you're pressing the button
-            #bat_level()
 
         #print ('Battery Voltage =',round(volts_0,2)) 
         sTime = time.time()
