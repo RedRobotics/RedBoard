@@ -60,7 +60,7 @@ while True:
           if elaspedTime <1:
               pi.write(redLed, False)
               print("Show IP")  
-              os.system('sudo python3 /home/pi/ip.py')  # Show IP address on neopixel 
+              os.system('sudo python3 /home/pi/RedBoard/ip.py')  # Show IP address on neopixel 
               time.sleep(0.1) 
               pi.write(redLed, True)  
           
