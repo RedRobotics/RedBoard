@@ -40,7 +40,6 @@ Click on the Down arrow in the top right of the screen to download the file, the
 
 ![WPA_Download](https://github.com/RedRobotics/RedBoard/blob/images/WPA_download.png)  
 
-https://github.com/RedRobotics/RedBoard/blob/images/WPA_download.png
 
 In Windows 10 look in your Downloads folder. Right click on the file then choose **'open with'** then **'More apps'** and select **Wordpad**. Don't use Notepad as it changes the text format.  
 
