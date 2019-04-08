@@ -98,7 +98,8 @@ We have created a number of different robots and the files will be available to 
 
 Here's an image to show you how to wire up your bot:
 
-![Simple Robot](https://github.com/RedRobotics/RedBoard/blob/Images/Redboard_SimpleRobot.png)
+![Simple Robot](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_SimpleRobot.png)
+
 
 The Headboard can drive two motors independently, at 6 Amps each continuously.  
 
