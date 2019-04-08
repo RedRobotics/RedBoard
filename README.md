@@ -38,18 +38,24 @@ Right click on the following link then click on **'Open Link In New Tab'**
 
 Click on the Down arrow in the top right of the screen to download the file, then click OK to save. 
 
-![WPA_Download](https://github.com/RedRobotics/RedBoard/blob/Images/WPA_download.PNG)  
+![WPA_Download](https://github.com/RedRobotics/RedBoard/blob/images/WPA_download.png)  
+
+https://github.com/RedRobotics/RedBoard/blob/images/WPA_download.png
 
 In Windows 10 look in your Downloads folder. Right click on the file then choose **'open with'** then **'More apps'** and select **Wordpad**. Don't use Notepad as it changes the text format.  
 
 Delete the text "Your WIFI Network" (keeping the quotes) and enter the name of your own WIFI network.  
 Then delete the text "Your WIFI Password" and enter your own WIFI password.  
 
-![WPA_edit](https://github.com/RedRobotics/RedBoard/blob/Images/WPA_edit.PNG)  
+![WPA_edit](https://github.com/RedRobotics/RedBoard/blob/images/WPA_edit.png)  
+
+
 
 Save the file, Then using your file manager drag this file on to the Drive labelled **'boot'**  
 
-![WPA_Copy](https://github.com/RedRobotics/RedBoard/blob/Images/WPA_copy.PNG)
+![WPA_Copy](https://github.com/RedRobotics/RedBoard/blob/images/WPA_copy.png)
+
+
 
 Eject the SD card and insert it into your Raspberry Pi. 
 
@@ -80,7 +86,8 @@ On a Windows PC, at the command prompt type:
 
 Then hit the 'Enter' key.
 
-![ipconfig](https://raw.githubusercontent.com/RedRobotics/HeadBoard/Images/CMD_IP.png)
+![ipconfig](https://github.com/RedRobotics/RedBoard/blob/images/CMD_IP.png)
+
 
 The highlighted text shows the IPv4 address, take the first three sets of digits then add the number as shown on the RGB LED.
 If the RGB LED flashed red once, green once and blue twice, your PI's IP address would be: 192.168.31.112
