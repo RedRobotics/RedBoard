@@ -20,7 +20,7 @@ Beginner tutorials and videos coming soon.
 
 ## Installation:
 
-Download the pre-configured SD card Image onto your PC from [here](https://drive.google.com/open?id=1bu4k9RbxIQbq_wrpo5eKhSLdIStcxCUP).
+Download the pre-configured SD card Image onto your PC from here. (Coming soon!)
 
 User: pi  
 Hostname: raspberry  
@@ -57,6 +57,11 @@ Save the file, Then using your file manager drag this file on to the Drive label
 
 
 Eject the SD card and insert it into your Raspberry Pi. 
+
+## IMPORTANT!
+The RedBoard+ will provide power to the Raspberry Pi (If you have connected a battery!).
+## DO NOT power the Raspberry Pi by it's USB port at the same time.
+
 
 Now turn on your PI. You are ready to make a robot!
 
@@ -247,4 +252,4 @@ Cut the power to the servo with:
 `redboard.servo20_off()`
 
 
-##More coming soon
+## More coming soon
