@@ -7,7 +7,6 @@
 from __future__ import print_function  # Make print work with python 2 & 3
 from evdev import InputDevice, ecodes
 import redboard
-#import ip
 
 dev = InputDevice('/dev/input/event0')
 #print(dev)
@@ -127,7 +126,7 @@ for event in dev.read_loop():
         # Analogue sticks
         if event.code == 1:  # Left analogue Vertical stick
 
-			# The analogue stick gives a value between 0-255
+            # The analogue stick gives a value between 0-255
             # Convert the value to 0-127 for forwards 
             # and 0- -127 for backwards
 		
