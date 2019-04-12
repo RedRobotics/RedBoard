@@ -1,3 +1,5 @@
+# Just stops all the motors - useful when testing.
+
 from redboard import *
 
 M1(0)
