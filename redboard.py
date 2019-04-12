@@ -214,6 +214,11 @@ def readAdc_3():
 
 # Servos
 
+
+def mapServo(sPos):
+    mapS = (int(sPos * 7) + 600)
+    return mapS
+
 def servo20(pos0):
     if pos0 >= 0 and pos0 <91:
         print ("servo20 =",pos0)
