@@ -20,10 +20,10 @@ Beginner tutorials and videos coming soon.
 
 ## Installation:
 
-Download the pre-configured SD card Image onto your PC from here. (Coming soon!)
+Download the pre-configured SD card Image onto your PC from [here.]https://drive.google.com/file/d/13sMK6NnuqYzQUxuvKbyPhFiQb4A3zjfU/view?usp=sharing
 
 User: pi  
-Hostname: raspberry  
+Hostname: redrobotics  
 Password: redboard  
 
 Write the image to a SD Card using Etcher, free download [here](https://www.balena.io/etcher/).  
@@ -70,7 +70,7 @@ If you have successfully connected to a wireless network, once your Pi has boote
 
 If it flashes white, It's not connected to the internet.
 
-You can of course use raspberrypi.local, but this is not so great in a classroom full of Pi's with the same hostname! More info [here](https://learn.adafruit.com/bonjour-zeroconf-networking-for-windows-and-linux/#microsoft-windows).  
+You can of course use raspberrypi.local or redrobotics.local (if using the redboard SD Image), but this is not so great in a classroom full of Pi's with the same hostname! More info [here](https://learn.adafruit.com/bonjour-zeroconf-networking-for-windows-and-linux/#microsoft-windows).  
 
 The RGB LED will show the last part of your IP address by flashing different colours, red for the first digit, green for the second and blue for the last.
 
