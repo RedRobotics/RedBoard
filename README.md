@@ -20,8 +20,8 @@ Beginner tutorials and videos coming soon.
 
 ## Installation:
 
-Download the pre-configured SD card Image onto your PC from here.(Coming soon!)  
-An error was found in the redboard_12-4-19 image, please download the latest image when available (planned for 15-4-19).
+Download the pre-configured SD card Image onto your PC from [here.](https://drive.google.com/open?id=1pq9FCnM-h7PL81gKGoHit7nAujqBxLfn)  
+An error was found in the redboard_12-4-19 image, please download and use the latest image.
 
 User: pi  
 Hostname: redrobotics  
