@@ -5,7 +5,8 @@ Simple python commands for controlling motors, servos and Neopixels (WS2812B).
 
 Works with Python 2 or 3.
 
-If you have won one of these boards at PiWars 2019, check here regularly - more instructions will be up soon!  
+If you have won one of these boards at PiWars 2019, check here regularly - more instructions will be up soon! 
+# This guide is a work in progress!
 
 Control a robot with a variety of controllers with example code for Rock Candy and PiHut PS3 Gamepads, Wiimote and generic bluetooth gamepads.  
 Get a robot up and running in minutes!  
@@ -152,11 +153,11 @@ For carsteer the left stick controls the speed and direction of both motors - pu
 
 ## Reset/Shutdown switch
 
-Short press- less than a second: the on-board red LED will flash off, The on-board Neopixel will flash the IP address of you Pi (see "What's my IP address?" above).
+Short press- less than a second: the on-board RGB LED will flash the IP address of you Pi (see "What's my IP address?" above).
 
-Medium press - between 1 and 4 seconds: On-board red LED flashes on and off - Pi resets.
+Medium press - between 1 and 4 seconds: On-board RGB LED flashes red on and off - Pi resets.
 
-Long press - greater than 4 seconds: On-board red LED turns off - Pi shuts down.
+Long press - greater than 4 seconds: On-board RGB LED turns off - Pi shuts down.
 
 
 Wait 20 seconds before sliding the power switch to make sure the Pi has had enough time to shutdown.
@@ -167,8 +168,8 @@ The reset switch can be reprogrammed for your own use - more on this later.
 
 Follow all commands with the 'Enter' key.
 
-Open up a python shell with:  
-`sudo python3`
+In the RedBoard directory - open up a python shell with:  
+`python3` - 
 
 Load the redboard module:  
 `import redboard`  
@@ -253,4 +254,6 @@ Cut the power to the servo with:
 `redboard.servo20_off()`
 
 
-## More coming soon
+## More coming soon -
+## Neopixels
+## ADC
