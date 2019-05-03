@@ -169,7 +169,7 @@ The reset switch can be reprogrammed for your own use - more on this later.
 Follow all commands with the 'Enter' key.
 
 In the RedBoard directory - open up a python shell with:  
-`python3` - 
+`python3` 
 
 Load the redboard module:  
 `import redboard`  
