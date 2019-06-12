@@ -5,7 +5,7 @@
 # The R1 button starts or stops turbo mode (the robot goes faster!) . 
 # The L1 and L2 buttons move a servo connected to GPIO 22 to two pre-set positions.
 # The Square button starts or stops a servo connected to GPIO 20 slowly sweeping left to right. This uses multiprocessing to run at the same time as the main program loop.  
-# The Triange, Circle, and X buttons start and stop different Neopixels sequences - also with multiprocessing.
+# The Triangle, Circle, and X buttons start and stop different Neopixels sequences - also with multiprocessing.
 
 
 # Author: Neil Lambeth. neil@redrobotics.co.uk @NeilRedRobotics
