@@ -148,7 +148,14 @@ For carsteer the left stick controls the speed and direction of both motors - pu
 
 `python3 carsteer.py`
 
+### Advanced robot example
+`robot.py`
 
+Example code for controlling motors, servos and neopixels.
+
+![Advanced Robot](https://github.com/RedRobotics/RedBoard/blob/images/robot_demo.png)
+
+ 
 
 
 ## Reset/Shutdown switch
