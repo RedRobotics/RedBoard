@@ -236,7 +236,7 @@ Motor2 half speed Backwards:
 
 ## Hobby Servo motors
 
-You can connect up to 8 servos. Plug the servos directly onto the Redboard, then use the GPIO numbering to control them.
+You can connect up to 12 servos. Plug the servos directly onto the Redboard, then use the GPIO numbering to control them.
 
 Eg.
 
@@ -245,6 +245,8 @@ Eg.
 `redboard.servo20(0)`  
 
 You can set the angle of the servo directly. 
+(The angle may vary depending on the servos you are using). 
+
 To set the servo to the centre position:  
 `redboard.servo20(0)`
 
@@ -278,3 +280,6 @@ Cut the power to the servo with:
 ## More coming soon -
 ## Neopixels
 ## ADC
+## Battery Monitoring
+## Startup
+## Power Options
