@@ -22,7 +22,6 @@ Beginner tutorials and videos coming soon.
 ## Installation:
 
 Download the pre-configured SD card Image onto your PC from [here.](https://drive.google.com/open?id=1pq9FCnM-h7PL81gKGoHit7nAujqBxLfn)  
-An error was found in the redboard_12-4-19 image, please download and use the latest image.
 
 User: pi  
 Hostname: redrobotics  
@@ -62,7 +61,7 @@ Eject the SD card and insert it into your Raspberry Pi.
 
 ## IMPORTANT!
 The RedBoard+ will provide power to the Raspberry Pi (If you have connected a battery!).
-## DO NOT power the Raspberry Pi by it's USB port at the same time.
+## DO NOT power the Raspberry Pi by it's USB port and a battery at the same time.
 
 
 Now turn on your PI. You are ready to make a robot!
