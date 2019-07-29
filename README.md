@@ -139,6 +139,8 @@ If your robot goes in the wrong direction, you may need to swap over the wires t
 
 If you have a [RockCandy](https://www.amazon.co.uk/Rock-Candy-Wireless-Controller-Red/dp/B00G6CLXRK/ref=sr_1_3?ie=UTF8&qid=1518395269&sr=8-3&keywords=rock+candy+ps3) or [PiHut](https://thepihut.com/products/raspberry-pi-compatible-wireless-gamepad-controller) PS3 controller, you can run the tanksteer.py or carsteer.py programs. They work with either controller.  
 
+### Note! The Redboard+ is designed to work with a headless Raspberry Pi - If you have a USB keyboard or mouse plugged in, the following programs will not work (without modification). Please unplug them and connect via ssh (see above).
+
 With the tanksteer program, the left analogue stick controls the left motor and the right stick controls the right motor. Push both sticks up for forward, both down for backwards and one up, one down to turn.  
 
 `python3 tanksteer.py`
@@ -148,7 +150,7 @@ For carsteer the left stick controls the speed and direction of both motors - pu
 `python3 carsteer.py`
 
 ### Advanced robot example
-`robot.py`
+`sudo python3 robot.py` - You'll need 'sudo' if you want to use Neopixels. 
 
 Example code showing different methods of controlling motors, servos, and Neopixels.
 
@@ -276,10 +278,68 @@ Centre:
 Cut the power to the servo with:  
 `redboard.servo20_off()`
 
+## ADC
+
+The RedBoard+ has 4 channel analogue to digital conveter ([ADS1X15](http://www.ti.com/lit/ds/symlink/ads1015.pdf)).  
+The first channel (channel_0) is used to measure the battery voltage (through a [voltage divider](https://en.wikipedia.org/wiki/Voltage_divider)).
+
+To get the battery voltage:  
+`readAdc_0()`
+
+The battery voltage level can be diplayed on the RGB Led (more on this soon).
+
+To measure a voltage on the other three channels - pins A1,A2,A3  
+(Max voltage on these pins is 3.3V):
+
+`readAdc_1()`
+
+`readAdc_2()`
+
+`readAdc_0()`
+
+## Neopixels
+
+Your Neopixel strip must be connected to pin 12 on the Redboard+
+To change the number of pixels you are using, edit the file:  
+/home/pi/RedBoard/neopixels.py  
+Change the value of LED_COUNT to match the number of pixels on your strip. 
+
+
+To use Neopixels you have to open your Python shell with 'sudo'.    
+Quit your existing shell with:  
+`CTRL+d`
+
+Then open the Python shell again with:  
+`sudo python3`
+
+Now import the neopixels module:  
+`import neopixels`
+
+You can run the original Adafruit demo by entering:  
+`neopixels.demo()`
+
+`CTRL+c` To stop the demo.
+
+To get a list of all the Neopixel functions:  
+`help(redboard)`  
+Use the arrow keys to scroll up and down, then 'q' to quit.
+
+Here's some examples to try:  
+`neopixels.clear()` - To turn all the pixels off  
+
+`neopixels.knightRider()`
+
+`neopixels.knightRider_fade()` - for use with 16 pixels  
+
+`neopixels.setColour(1,100,140,0)` - To set an individual pixel
+
+
+
+
+See the robot.py program for more advanced use.
 
 ## More coming soon -
-## Neopixels
-## ADC
 ## Battery Monitoring
 ## Startup
 ## Power Options
+## PiOLED Screen
