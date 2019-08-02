@@ -140,10 +140,10 @@ If you need to stop quickly, hit the Spacebar.
 
 If your robot goes in the wrong direction, you may need to swap over the wires that go to the motor(s). Press the W key to go forwards and check which way the motors turn, if one (or both) go backwards, swap it's wires over.    
 
+## Example Programs
+
 If you have a [RockCandy](https://www.amazon.co.uk/Rock-Candy-Wireless-Controller-Red/dp/B00G6CLXRK/ref=sr_1_3?ie=UTF8&qid=1518395269&sr=8-3&keywords=rock+candy+ps3) or [PiHut](https://thepihut.com/products/raspberry-pi-compatible-wireless-gamepad-controller) PS3 controller, you can run the tanksteer.py or carsteer.py programs. They work with either controller.  
 
-
-## Example Programs
 
 ### Important! 
 ### The Redboard+ is designed to work with a headless Raspberry Pi - If you have a USB keyboard or mouse plugged in, the following programs will not work (without modification). Please unplug all USB input devices except the gamepad dongle and connect via ssh (see above).
