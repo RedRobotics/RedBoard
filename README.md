@@ -142,13 +142,17 @@ If your robot goes in the wrong direction, you may need to swap over the wires t
 
 If you have a [RockCandy](https://www.amazon.co.uk/Rock-Candy-Wireless-Controller-Red/dp/B00G6CLXRK/ref=sr_1_3?ie=UTF8&qid=1518395269&sr=8-3&keywords=rock+candy+ps3) or [PiHut](https://thepihut.com/products/raspberry-pi-compatible-wireless-gamepad-controller) PS3 controller, you can run the tanksteer.py or carsteer.py programs. They work with either controller.  
 
-### Note! The Redboard+ is designed to work with a headless Raspberry Pi - If you have a USB keyboard or mouse plugged in, the following programs will not work (without modification). Please unplug them and connect via ssh (see above).
 
-With the tanksteer program, the left analogue stick controls the left motor and the right stick controls the right motor. Push both sticks up for forward, both down for backwards and one up, one down to turn.  
+## Example Programs
+
+### Important! 
+### The Redboard+ is designed to work with a headless Raspberry Pi - If you have a USB keyboard or mouse plugged in, the following programs will not work (without modification). Please unplug all USB input devices except the gamepad dongle and connect via ssh (see above).
+
+Tanksteer controls the robot like a tank, the left analogue stick controls the left motor and the right stick controls the right motor. Push both sticks up for forward, both down for backwards and one up, one down to turn.  
 
 `python3 tanksteer.py`
 
-For carsteer the left stick controls the speed and direction of both motors - push up to go forwards and down for backwards. The right stick is for steering - push the stick left or right to steer.
+Carsteer is like a traditional RC Car controller, the left stick controls the speed and direction of both motors - push up to go forwards and down for backwards. The right stick is for steering - push the stick left or right to steer.
 
 `python3 carsteer.py`
 
