@@ -4,8 +4,7 @@ Python library for the RedBoard+ - Raspberry Pi Robotics Controller.
 Simple python commands for controlling motors, servos and Neopixels (WS2812B).
 
 Works with Python 2 or 3.
-
-If you have won one of these boards at PiWars 2019, check here regularly - more instructions will be up soon! 
+ 
 # This guide is a work in progress!
 
 Control a robot with a variety of controllers with example code for Rock Candy and PiHut PS3 Gamepads, Wiimote and generic bluetooth gamepads.  
@@ -31,7 +30,11 @@ Write the image to a SD Card using Etcher, free download [here](https://www.bale
 
 When it's finished eject the SD card but insert it straight back into your PC.
 
+
 ## Set up WiFi:
+
+### You can set up your Pi with a monitor and keyboard but once setup, you should disconnect them and SSH into the Pi from another computer. If you do this, you can skip down to - What's My IP Address.  
+
 Start by downloading the **'wpa_supplicant.conf'** file.  
 Right click on the following link then click on **'Open Link In New Tab'**  
 [wpa_supplicant.conf](https://drive.google.com/open?id=1uCWuYTg1RJA3OcOGgZ8GjAKcLZc1t3vj).  
@@ -187,6 +190,10 @@ Wait 20 seconds before sliding the power switch to make sure the Pi has had enou
 
 The reset switch can be reprogrammed for your own use - more on this later.
 
+### Important!  
+### The power switch does not completely isolate the battery pack, it will still draw a tiny amount of current. 
+### Unplug the battery pack after use or it may over-discharge it. 
+
 ## Basic Library Usage:
 
 Follow all commands with the 'Enter' key.
@@ -280,7 +287,7 @@ Cut the power to the servo with:
 
 ## ADC
 
-The RedBoard+ has 4 channel analogue to digital conveter ([ADS1X15](http://www.ti.com/lit/ds/symlink/ads1015.pdf)).  
+The RedBoard+ has a 4 channel analogue to digital conveter ([ADS1X15](http://www.ti.com/lit/ds/symlink/ads1015.pdf)).  
 The first channel (channel_0) is used to measure the battery voltage (through a [voltage divider](https://en.wikipedia.org/wiki/Voltage_divider)).
 
 To get the battery voltage:  
