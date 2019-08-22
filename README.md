@@ -194,9 +194,25 @@ Wait 20 seconds before sliding the power switch to make sure the Pi has had enou
 
 The reset switch can be reprogrammed for your own use - more on this later.
 
+## Power Switch
+
 ### Important!  
 ### The power switch does not completely isolate the battery pack, it will still draw a tiny amount of current. 
-### Unplug the battery pack after use or it may over-discharge it. 
+### Unplug the battery pack after use or it may over-discharge.
+
+You can add an additional power switch and mount it on your robot's chassis.
+
+This will completely isolate the battery pack when switched off.
+
+Make sure you use a switch rated to handle the max current for your motors + 3 Amps. 
+Try this one from [CPC](https://cpc.farnell.com/molveno/sx81111811210000/rocker-switch-20a-blk-1-0-sp-off/dp/SW05297).
+
+If you use an external switch, leave the on-board power switch in the 'ON' position. Remember to shut down your Pi correctly before removing the power. 
+
+![Power Switch](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_PowerSwitch.png)
+
+
+
 
 ## Basic Library Usage:
 
