@@ -228,6 +228,48 @@ The servo power pins will be at 7.4 volts, do not plug 5 volt devices into them.
 
 ![Advanced Power](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_AdvancedServoPower.png)
 
+## Battery Monitoring
+
+Battery monitoring is turned off by default. This is because I've only created profiles for 2S (7.4v) and 3S (11.1v) Lipo batteries. I'll add more profiles soon.
+
+If you are using a 2S or 3S Lipo, you can enable battery monitoring. This shows the battery level on the RGB led. 
+
+Edit the rc.local file by typing the following in the terminal:
+
+`sudo nano /etc/rc.local` - Hit Enter.
+
+
+
+Uncomment the following line by removing the `#`:
+
+`#sudo python3 /home/pi/RedBoard/system/system_monitor.py&`
+
+Then comment the following line by adding a `#` at the start:
+
+`sudo python3 /home/pi/RedBoard/system/reset_shutdown.py&`
+
+Make sure only one of these line is uncommented.
+
+Your edited file should look like this:
+
+![System Monitor](https://github.com/RedRobotics/RedBoard/blob/images/system_monitor.png)
+
+Save the file by pressing `Control x`, then `y`, then `Enter` 
+
+You will have to reboot for the changes to take effect.
+
+Once rebooted, the battery level will show on the RGB Led:
+
+Green = Good
+
+Amber = OK
+
+Red = Low
+
+Flashing Red = Critical
+
+
+
 ## Basic Library Usage:
 
 Follow all commands with the 'Enter' key.
@@ -380,7 +422,5 @@ Here's some examples to try:
 See the robot.py program for more advanced use.
 
 ## More coming soon -
-## Battery Monitoring
 ## Startup
-## Power Options
 ## PiOLED Screen
