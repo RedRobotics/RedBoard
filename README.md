@@ -211,6 +211,13 @@ If you use an external switch, leave the on-board power switch in the 'ON' posit
 
 ![Power Switch](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_PowerSwitch.png)
 
+## Additional Servo Power
+
+If you want to drive lots of big servos, you can give them with their own power supply.
+
+There is a jumper just behind the Servo Power Connector, this switches between the on-board 5v supply and external power. 
+
+![Servo Power](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_ServoPower.png)
 
 
 
