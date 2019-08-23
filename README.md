@@ -64,7 +64,7 @@ Eject the SD card and insert it into your Raspberry Pi.
 
 ## IMPORTANT!
 The RedBoard+ will provide power to the Raspberry Pi (If you have connected a battery!).
-## DO NOT power the Raspberry Pi by it's USB port and a battery at the same time.
+## DO NOT power the Raspberry Pi by its USB port and a battery at the same time.
 
 
 Now turn on your PI. You are ready to make a robot!
