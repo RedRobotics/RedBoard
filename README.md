@@ -220,6 +220,13 @@ There is a jumper just behind the Servo Power Connector, this switches between t
 ![Servo Power](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_ServoPower.png)
 
 
+## Advanced Servo Power
+
+You can drive [7.4v Robot Servo](https://www.amazon.co.uk/LewanSoul-LDX-227-Standard-Digital-Bearing/dp/B077TXLWZS/ref=sr_1_31?keywords=7.4v+robot+servo&qid=1566558643&s=gateway&sr=8-31) directly from the RedBoard+.
+
+The servo power pins will be at 7.4 volts, do not plug 5 volt devices into them.  
+
+![Advanced Power](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_AdvancedServoPower.png)
 
 ## Basic Library Usage:
 
