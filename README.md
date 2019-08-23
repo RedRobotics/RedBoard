@@ -268,6 +268,7 @@ Red = Low
 
 Flashing Red = Critical
 
+Critical battery auto shutdown coming soon.
 
 
 ## Basic Library Usage:
