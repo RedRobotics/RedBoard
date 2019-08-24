@@ -279,12 +279,12 @@ Edit the rc.local file by typing the following in the terminal:
 
 `sudo nano /etc/rc.local` - Hit Enter.
 
-Scroll to the bottom of the file and just above `exit 0` type the full path to the program you want to run. 
+Scroll to the bottom of the file and just above `exit 0` type `python3` then the full path to the program you want to run. 
 
-Here's an example, to run the `carsteer.py` program type:
+Here's an example, to run the `carsteer.py` program - type:
 `python3 /home/pi/RedBoard/carsteer.py&`
 
-Make sure you put `&` at the end of the line.
+Make sure you put `&` at the end of the line. 
 
 The end of your file should look like this:
 
@@ -441,5 +441,4 @@ Here's some examples to try:
 See the robot.py program for more advanced use.
 
 ## More coming soon -
-## Startup
 ## PiOLED Screen
