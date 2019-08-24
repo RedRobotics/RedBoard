@@ -222,9 +222,12 @@ There is a jumper just behind the Servo Power Connector, this switches between t
 
 ## Advanced Servo Power
 
-You can drive [7.4v Robot Servo](https://www.amazon.co.uk/LewanSoul-LDX-227-Standard-Digital-Bearing/dp/B077TXLWZS/ref=sr_1_31?keywords=7.4v+robot+servo&qid=1566558643&s=gateway&sr=8-31) directly from the RedBoard+.
+You can drive [7.4v Robot Servos](https://www.amazon.co.uk/LewanSoul-LDX-227-Standard-Digital-Bearing/dp/B077TXLWZS/ref=sr_1_31?keywords=7.4v+robot+servo&qid=1566558643&s=gateway&sr=8-31) directly from the RedBoard+.
+
+These servos are very powerful, be careful when using them!
 
 The servo power pins will be at 7.4 volts, do not plug 5 volt devices into them.  
+
 
 ![Advanced Power](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_AdvancedServoPower.png)
 
@@ -238,8 +241,6 @@ Edit the rc.local file by typing the following in the terminal:
 
 `sudo nano /etc/rc.local` - Hit Enter.
 
-
-
 Uncomment the following line by removing the `#`:
 
 `#sudo python3 /home/pi/RedBoard/system/system_monitor.py&`
@@ -250,7 +251,7 @@ Then comment the following line by adding a `#` at the start:
 
 Make sure only one of these line is uncommented.
 
-Your edited file should look like this:
+The edited part of the file should look like this:
 
 ![System Monitor](https://github.com/RedRobotics/RedBoard/blob/images/system_monitor.png)
 
@@ -269,6 +270,25 @@ Red = Low
 Flashing Red = Critical
 
 Critical battery auto shutdown coming soon.
+
+## Auto Starting Programs
+
+To run a python program automatically when your Pi starts up - 
+
+Edit the rc.local file by typing the following in the terminal:
+
+`sudo nano /etc/rc.local` - Hit Enter.
+
+Scroll to the bottom of the file and just above `exit 0` type the full path to the program you want to run. 
+
+Here's an example, to run the `carsteer.py` program type:
+`python3 /home/pi/RedBoard/carsteer.py&`
+
+Make sure you put `&` at the end of the line.
+
+The end of your file should look like this:
+
+![Start Up](https://github.com/RedRobotics/RedBoard/blob/images/startup.png)
 
 
 ## Basic Library Usage:
@@ -369,8 +389,6 @@ The first channel (channel_0) is used to measure the battery voltage (through a 
 
 To get the battery voltage:  
 `readAdc_0()`
-
-The battery voltage level can be diplayed on the RGB Led (more on this soon).
 
 To measure a voltage on the other three channels - pins A1,A2,A3  
 (Max voltage on these pins is 3.3V):
