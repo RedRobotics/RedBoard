@@ -47,6 +47,7 @@ then
     echo 
 else
     sudo sed -i -e '$i #Show IP Address\nsudo python3 /home/pi/RedBoard/system/ip.py;' /etc/rc.local
+    sudo sed -i -e '$i \n' /etc/rc.local
 fi
 
 
@@ -60,6 +61,7 @@ else
     sudo sed -i -e '$i ## Only run one of these two programs\n' /etc/rc.local
     sudo sed -i -e '$i sudo python3 /home/pi/RedBoard/reset_shutdown.py&' /etc/rc.local
     sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
+    sudo sed -i -e '$i \n' /etc/rc.local
 fi
 
 
@@ -72,6 +74,7 @@ else
     sudo sed -i -e '$i ## Display IP address and battery voltage if' /etc/rc.local
     sudo sed -i -e '$i ## you have an PiOled (ssd1306) screen attached' /etc/rc.local
     sudo sed -i -e '$i python3 /home/pi/RedBoard/ssd1306_stats.py&' /etc/rc.local
+    sudo sed -i -e '$i \n' /etc/rc.local
 fi
 
 
@@ -81,7 +84,7 @@ then
 else
     sudo sed -i -e '$i ## Run your program at startup here - with the "&" symbol at the end.' /etc/rc.local
     sudo sed -i -e '$i ## Eg. uncomment the following line to run robot.py at startup' /etc/rc.local
-    sudo sed -i -e '$i #python3 /home/pi/RedBoard/robot.py&\n' /etc/rc.local
+    sudo sed -i -e '$i #python3 /home/pi/RedBoard/robot.py&' /etc/rc.local
 fi
 
 echo
