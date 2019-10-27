@@ -47,7 +47,7 @@ then
     echo 
 else
     sudo sed -i -e '$i #Show IP Address\nsudo python3 /home/pi/RedBoard/system/ip.py;' /etc/rc.local
-    sudo sed -i -e '$i \n' /etc/rc.local
+    sudo sed -i -e '$i ' /etc/rc.local
 fi
 
 
@@ -61,7 +61,7 @@ else
     sudo sed -i -e '$i ## Only run one of these two programs\n' /etc/rc.local
     sudo sed -i -e '$i sudo python3 /home/pi/RedBoard/reset_shutdown.py&' /etc/rc.local
     sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
-    sudo sed -i -e '$i \n' /etc/rc.local
+    sudo sed -i -e '$i ' /etc/rc.local
 fi
 
 
@@ -74,7 +74,7 @@ else
     sudo sed -i -e '$i ## Display IP address and battery voltage if' /etc/rc.local
     sudo sed -i -e '$i ## you have an PiOled (ssd1306) screen attached' /etc/rc.local
     sudo sed -i -e '$i python3 /home/pi/RedBoard/ssd1306_stats.py&' /etc/rc.local
-    sudo sed -i -e '$i \n' /etc/rc.local
+    sudo sed -i -e '$i ' /etc/rc.local
 fi
 
 
@@ -99,7 +99,7 @@ then
     sudo reboot
 elif [ "x$yesno" = "xn" ]
 then
-    echo 'You will need to reboot for changes to take effect'
+    echo 'You will need to reboot for the changes to take effect.'
 else
-    echo "Enter y or n"
+    echo 'You will need to reboot for the changes to take effect.'
 fi    
