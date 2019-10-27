@@ -81,7 +81,7 @@ then
 else
     sudo sed -i -e '$i ## Run your program at startup here - with the "&" symbol at the end.' /etc/rc.local
     sudo sed -i -e '$i ## Eg. uncomment the following line to run robot.py at startup' /etc/rc.local
-    sudo sed -i -e '$i #python3 /home/pi/RedBoard/redboard_test.py&\n' /etc/rc.local
+    sudo sed -i -e '$i #python3 /home/pi/RedBoard/robot.py&\n' /etc/rc.local
 fi
 
 echo
