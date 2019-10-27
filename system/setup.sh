@@ -2,6 +2,8 @@
 
 #Uses the pigpio library: http://abyz.me.uk/rpi/pigpio/  
 
+#Neopixel set up taken from the original Adafruit tutorial: 
+#https://learn.adafruit.com/neopixels-on-raspberry-pi/software 
 
 cd
 sudo apt-get install python3-dev python-dev python-pip python3-pip joystick -y
@@ -10,14 +12,21 @@ sudo pip install evdev
 
 sudo apt-get install python-smbus python3-smbus i2c-tools
 
-sudo apt-get install build-essential git -y
-
-
+sudo apt-get install build-essential git scons swig -y
 
 sudo rm -rf RedBoard
 git clone https://github.com/RedRobotics/RedBoard.git
-#wget https://github.com/RedRobotics/RedBoard/archive/master.zip
 
+
+cd
+git clone https://github.com/jgarff/rpi_ws281x.git
+cd rpi_ws281x
+scons
+
+cd python
+sudo python setup.py install
+sudo python3 setup.py install
+cd
 
 
 if grep -Fq "pigpiod" "/etc/rc.local"
@@ -29,17 +38,51 @@ else
     sudo apt-get install pigpio python-pigpio python3-pigpio
     #sudo systemctl enable pigpiod  # This works better in rc.local
     sudo sed -i -e '$i #start Pigpio deamon\nsudo pigpiod\n' /etc/rc.local
+    sudo sed -i -e '$i sleep 5\n' /etc/rc.local
 fi
 
 
+if grep -Fq "ip.py" "/etc/rc.local"
+then
+    echo 
+else
+    sudo sed -i -e '$i #Show IP Address\nsudo python3 /home/pi/RedBoard/system/ip.py;'/etc/rc.local
+fi
 
-if grep -Fq "system_monitor.py" "/etc/rc.local"
+
+if grep -Fq "reset_shutdown.py" "/etc/rc.local"
 then
     echo "System Monitor already running"
 else
     echo "Installing System Monitor" 
-    sudo sed -i -e '$i #start System Monitor\nsudo python3 /home/pi/RedBoard/ip.py; sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
+    sudo sed -i -e '$i ## Start system monitor (to measure battery level, currently only calibrated for 2s or 3s Lipo batteries)\n' /etc/rc.local
+    sudo sed -i -e '$i ## or just the reset/shutdown button monitor\n' /etc/rc.local
+    sudo sed -i -e '$i ## Only run one of these two programs\n\n' /etc/rc.local
+    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/reset_shutdown.py&\n' /etc/rc.local
+    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system_monitor.py&\n' /etc/rc.local
 fi
+
+
+if grep -Fq "ssd1306" "/etc/rc.local"
+then
+    echo 
+else
+    sudo pip3 install adafruit-circuitpython-ssd1306
+    sudo apt-get install python3-pil
+    sudo sed -i -e '$i ## Display IP address and battery voltage if \n' /etc/rc.local
+    sudo sed -i -e '$i ## you have an PiOled (ssd1306) screen attached\n' /etc/rc.local
+    sudo sed -i -e '$i python3 /home/pi/RedBoard/ssd1306_stats.py&\n' /etc/rc.local
+fi
+
+
+if grep -Fq "robot.py" "/etc/rc.local"
+then
+    echo 
+else
+    sudo sed -i -e '$i ## Run your program at startup here - with the "&" symbol at the end.\n' /etc/rc.local
+    sudo sed -i -e '$i ## Eg. uncomment the following line to run robot.py at startup\n' /etc/rc.local
+    sudo sed -i -e '$i #python3 /home/pi/RedBoard/redboard_test.py&\n' /etc/rc.local
+
 
 echo
 echo "Install Finished"
@@ -53,8 +96,7 @@ then
     sudo reboot
 elif [ "x$yesno" = "xn" ]
 then
-    echo 'No'
+    echo 'You will need to reboot for changes to take effect'
 else
     echo "Enter y or n"
 fi    
-
