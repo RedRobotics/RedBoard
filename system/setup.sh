@@ -46,7 +46,7 @@ if grep -Fq "ip.py" "/etc/rc.local"
 then
     echo 
 else
-    sudo sed -i -e '$i #Show IP Address\nsudo python3 /home/pi/RedBoard/system/ip.py;'/etc/rc.local
+    sudo sed -i -e '$i #Show IP Address\nsudo python3 /home/pi/RedBoard/system/ip.py;' /etc/rc.local
 fi
 
 
@@ -55,11 +55,11 @@ then
     echo "System Monitor already running"
 else
     echo "Installing System Monitor" 
-    sudo sed -i -e '$i ## Start system monitor (to measure battery level, currently only calibrated for 2s or 3s Lipo batteries)\n' /etc/rc.local
-    sudo sed -i -e '$i ## or just the reset/shutdown button monitor\n' /etc/rc.local
-    sudo sed -i -e '$i ## Only run one of these two programs\n\n' /etc/rc.local
-    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/reset_shutdown.py&\n' /etc/rc.local
-    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system_monitor.py&\n' /etc/rc.local
+    sudo sed -i -e '$i ## Start system monitor (to measure battery level, currently only calibrated for 2s or 3s Lipo batteries)' /etc/rc.local
+    sudo sed -i -e '$i ## or just the reset/shutdown button monitor' /etc/rc.local
+    sudo sed -i -e '$i ## Only run one of these two programs\n' /etc/rc.local
+    sudo sed -i -e '$i sudo python3 /home/pi/RedBoard/reset_shutdown.py&' /etc/rc.local
+    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
 fi
 
 
@@ -69,9 +69,9 @@ then
 else
     sudo pip3 install adafruit-circuitpython-ssd1306
     sudo apt-get install python3-pil
-    sudo sed -i -e '$i ## Display IP address and battery voltage if \n' /etc/rc.local
-    sudo sed -i -e '$i ## you have an PiOled (ssd1306) screen attached\n' /etc/rc.local
-    sudo sed -i -e '$i python3 /home/pi/RedBoard/ssd1306_stats.py&\n' /etc/rc.local
+    sudo sed -i -e '$i ## Display IP address and battery voltage if' /etc/rc.local
+    sudo sed -i -e '$i ## you have an PiOled (ssd1306) screen attached' /etc/rc.local
+    sudo sed -i -e '$i python3 /home/pi/RedBoard/ssd1306_stats.py&' /etc/rc.local
 fi
 
 
