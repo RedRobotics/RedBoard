@@ -47,7 +47,7 @@ voltage3 = readAdc_3()
 #print (voltage0[0])
 #print (voltage0[1])
 conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-volts_0 = conversion_0 / 2157.5 #  Battery voltage through voltage divider
+volts_0 = conversion_0 / 1116  # Battery voltage through voltage divider #2157.5 V0.3
 
 if conversion_0 > 65530:  # Show 0 volts if connected to ground
 	volts_0 = 0.00
@@ -60,12 +60,12 @@ print ('Battery Voltage =',round(volts_0,2))
 # A1 Voltage
 
 conversion_1 = (voltage1[1])+(voltage1[0]<<8)
-volts_1 = conversion_1 / 7891 # 3.3 Volts
+volts_1 = conversion_1 / 8000 # 3.3 Volts
 
 if conversion_1 > 65530:  # Show 0 volts if connected to ground
 	volts_1 = 0.00
 
-#print (conversion)
+#print (conversion_1)
 print ('A1 Voltage =',round(volts_1,2))
 
 
@@ -73,12 +73,12 @@ print ('A1 Voltage =',round(volts_1,2))
 # A2 Voltage
 
 conversion_2 = (voltage2[1])+(voltage2[0]<<8)
-volts_2 = conversion_2 / 7891 # 3.3 Volts
+volts_2 = conversion_2 / 8000 # 3.3 Volts
 
 if conversion_2 > 65530:  # Show 0 volts if connected to ground
 	volts_2 = 0.00
 
-#print (conversion)
+#print (conversion_2)
 print ('A2 Voltage =',round(volts_2,2))
 
 
@@ -86,12 +86,12 @@ print ('A2 Voltage =',round(volts_2,2))
 # A3 Voltage
 
 conversion_3 = (voltage3[1])+(voltage3[0]<<8)
-volts_3 = conversion_3 / 7891 # 3.3 Volts
+volts_3 = conversion_3 / 8000 # 3.3 Volts
 
 if conversion_3 > 65530:  # Show 0 volts if connected to ground
 	volts_3 = 0.00
 
-#print (conversion)
+#print (conversion_3)
 print ('A3 Voltage =',round(volts_3,2))
 
     
