@@ -46,8 +46,7 @@ if grep -Fq "ip.py" "/etc/rc.local"
 then
     echo 
 else
-    sudo sed -i -e '$i #Show IP Address\nsudo python3 /home/pi/RedBoard/system/ip.py;' /etc/rc.local
-    sudo sed -i -e '$i ' /etc/rc.local
+    sudo sed -i -e '$i #Show IP Address\nsudo python3 /home/pi/RedBoard/system/ip.py;\n\n\n ' /etc/rc.local
 fi
 
 
@@ -57,11 +56,10 @@ then
 else
     echo "Installing System Monitor" 
     sudo sed -i -e '$i ## Start system monitor (to measure battery level, currently only calibrated for 2s or 3s Lipo batteries)' /etc/rc.local
-    sudo sed -i -e '$i ## or just the reset/shutdown button monitor' /etc/rc.local
-    sudo sed -i -e '$i ## Only run one of these two programs\n' /etc/rc.local
+    sudo sed -i -e '$i ## or just the reset/shutdown button monitor. This is the default option.' /etc/rc.local
+    sudo sed -i -e '$i ## Only run one of these two programs:\n' /etc/rc.local
     sudo sed -i -e '$i sudo python3 /home/pi/RedBoard/reset_shutdown.py&' /etc/rc.local
-    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system_monitor.py&' /etc/rc.local
-    sudo sed -i -e '$i ' /etc/rc.local
+    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system_monitor.py&\n\n\n ' /etc/rc.local
 fi
 
 
@@ -73,8 +71,7 @@ else
     sudo apt-get install python3-pil
     sudo sed -i -e '$i ## Display IP address and battery voltage if' /etc/rc.local
     sudo sed -i -e '$i ## you have an PiOled (ssd1306) screen attached' /etc/rc.local
-    sudo sed -i -e '$i python3 /home/pi/RedBoard/ssd1306_stats.py&' /etc/rc.local
-    sudo sed -i -e '$i ' /etc/rc.local
+    sudo sed -i -e '$i python3 /home/pi/RedBoard/ssd1306_stats.py&\n\n\n ' /etc/rc.local
 fi
 
 
@@ -84,19 +81,20 @@ then
 else
     sudo sed -i -e '$i ## Run your program at startup here - with the "&" symbol at the end.' /etc/rc.local
     sudo sed -i -e '$i ## Eg. uncomment the following line to run robot.py at startup' /etc/rc.local
-    sudo sed -i -e '$i #python3 /home/pi/RedBoard/robot.py&' /etc/rc.local
+    sudo sed -i -e '$i #python3 /home/pi/RedBoard/robot.py&/n ' /etc/rc.local
 fi
 
 echo
-echo "Install Finished"
+echo "Installation Finished!"
 echo
-echo -n "Reboot now?"
+echo -n "Would you like to reboot now? Enter y or n:"
 read yesno < /dev/tty
 
 if [ "x$yesno" = "xy" ];
 then
-    echo 'Rebooting'
-    sudo reboot
+    echo 'Rebooting...'
+    #sudo reboot
+    exit
 elif [ "x$yesno" = "xn" ]
 then
     echo 'You will need to reboot for the changes to take effect.'
