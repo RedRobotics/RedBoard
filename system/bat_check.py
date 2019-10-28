@@ -21,7 +21,7 @@ voltage0 = readAdc_0()
 #print (voltage0[0])
 #print (voltage0[1])
 conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-volts_0 = conversion_0 / 2020 #  Battery voltage through voltage divider
+volts_0 = conversion_0 / 1116 #  Battery voltage through voltage divider
 
 #print (conversion_0)
 print (round(volts_0,2))
