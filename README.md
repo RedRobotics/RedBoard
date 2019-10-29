@@ -7,7 +7,7 @@ Works with Python 2 or 3.
  
 # This guide is a work in progress!
 
-Control a robot with a variety of controllers with example code for Rock Candy and PiHut PS3 Gamepads, Wiimote and generic bluetooth gamepads.  
+Control a robot with a variety of controllers with example code for Rock Candy and PiHut PS3 Gamepads. PS4 coming soon! 
 Get a robot up and running in minutes!  
 
 ![Connection Guide](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_Guide.png)
@@ -16,12 +16,40 @@ Get a robot up and running in minutes!
 This guide assumes a working knowledge of the Raspberry Pi, how to set one up headlessly, and how to connect remotely via SSH.
 Here's a great guide on how to do it from [Adafruit](https://learn.adafruit.com/raspberry-pi-zero-creation/overview).
 
-Beginner tutorials and videos coming soon.
 
-## Installation:
+## Installaltion:
+See below for the pre-configured SD Card Image (This is the easiest way to get up and running).  
+
+Or follow these instructions to install everything yourself.  
+
+It's best to start with a fresh install of Raspian Lite (Neopixels don't work well on the desktop version of Raspian). 
+
+Download it from the [Raspberry Pi website](https://www.raspberrypi.org/downloads/raspbian/).
+
+
+Set up your Pi and connect it to your Wifi network.
+
+You will have to enable the I2C interface.
+Here's the guide from [Adafruit](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
+
+
+Once your Pi is up and running, make sure everything is up to date by copying and pasting the following in the terminal, then hit the **'ENTER'** key:
+
+`sudo apt-get update && sudo apt-get upgrade -y`
+
+
+When that's finished, enter:
+
+`curl -L https://raw.githubusercontent.com/RedRobotics/RedBoard/master/system/setup.sh | bash`
+
+This will install all the files you need. When it's finished it will ask if you want to reboot. You will have to reboot for the changes to take effect.  
+If you are not prompted to reboot, something went wrong. simply run the installer again (It may take a few attempts!).
+
+If you install this way you can skip down to What's my IP address?  
+
+## Pre-configured SD Image:
 
 Download the pre-configured SD card Image onto your PC from [here.](https://drive.google.com/open?id=1CVyusdQVloAlMSNnSo6dqUdGsPXhNg5B)  
-
 
 
 User: pi  
@@ -154,7 +182,7 @@ Tanksteer controls the robot like a tank, the left analogue stick controls the l
 
 `python3 tanksteer.py`
 
-Carsteer is like a traditional RC Car controller, the left stick controls the speed and direction of both motors - push up to go forwards and down for backwards. The right stick is for steering - push the stick left or right to steer.
+Carsteer is like a traditional RC Car controller, the left stick controls the speed of both motors - push up to go forwards and down for backwards. The right stick is for steering - push the stick left or right to steer.
 
 `python3 carsteer.py`
 
