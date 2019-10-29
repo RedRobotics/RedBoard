@@ -36,7 +36,6 @@ else
     echo "Installing Pigpio"
     cd
     sudo apt-get install pigpio python-pigpio python3-pigpio
-    #sudo systemctl enable pigpiod  # This works better in rc.local
     sudo sed -i -e '$i #start Pigpio deamon\nsudo pigpiod\n' /etc/rc.local
     sudo sed -i -e '$i sleep 5\n' /etc/rc.local
 fi
@@ -58,8 +57,8 @@ else
     sudo sed -i -e '$i ## Start system monitor (to measure battery level, currently only calibrated for 2s or 3s Lipo batteries)' /etc/rc.local
     sudo sed -i -e '$i ## or just the reset/shutdown button monitor. This is the default option.' /etc/rc.local
     sudo sed -i -e '$i ## Only run one of these two programs:\n' /etc/rc.local
-    sudo sed -i -e '$i sudo python3 /home/pi/RedBoard/reset_shutdown.py&' /etc/rc.local
-    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system_monitor.py&\n\n\n ' /etc/rc.local
+    sudo sed -i -e '$i sudo python3 /home/pi/RedBoard/system/reset_shutdown.py&' /etc/rc.local
+    sudo sed -i -e '$i #sudo python3 /home/pi/RedBoard/system/system_monitor.py&\n\n\n ' /etc/rc.local
 fi
 
 
@@ -81,7 +80,7 @@ then
 else
     sudo sed -i -e '$i ## Run your program at startup here - with the "&" symbol at the end.' /etc/rc.local
     sudo sed -i -e '$i ## Eg. uncomment the following line to run robot.py at startup' /etc/rc.local
-    sudo sed -i -e '$i #python3 /home/pi/RedBoard/robot.py&/n ' /etc/rc.local
+    sudo sed -i -e '$i #python3 /home/pi/RedBoard/robot.py&\n#' /etc/rc.local
 fi
 
 echo
