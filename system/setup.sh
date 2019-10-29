@@ -92,7 +92,7 @@ read yesno < /dev/tty
 if [ "x$yesno" = "xy" ];
 then
     echo 'Rebooting...'
-    #sudo reboot
+    sudo reboot
     exit
 elif [ "x$yesno" = "xn" ]
 then
