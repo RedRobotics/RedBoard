@@ -73,7 +73,7 @@ def readAdc():
         time.sleep(0.1)
         voltage0 = bus.read_i2c_block_data(address,0x00,2)
         conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-        adc = conversion_0 / 2020 #  Battery voltage through voltage divider
+        adc = conversion_0 / 1116 #  Battery voltage through voltage divider
         return adc
     except IOError:
         os.system('i2cdetect -y 1')
