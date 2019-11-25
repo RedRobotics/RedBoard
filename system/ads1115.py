@@ -47,7 +47,7 @@ voltage3 = readAdc_3()
 #print (voltage0[0])
 #print (voltage0[1])
 conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-volts_0 = conversion_0 / 1116  # Battery voltage through voltage divider #2157.5 V0.3
+volts_0 = conversion_0 / 1116  # Battery voltage through voltage divider #2159 - V0.2
 
 if conversion_0 > 65530:  # Show 0 volts if connected to ground
 	volts_0 = 0.00
