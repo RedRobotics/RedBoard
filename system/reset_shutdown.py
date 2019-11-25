@@ -13,7 +13,7 @@ import pigpio
  
  
 button = 17
-redLed = 26
+redLed = 19  # Changed to blue LED  
 buttonPress = False
 startTime = 0
 elaspedTime = 0
