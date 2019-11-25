@@ -453,7 +453,7 @@ You can run the original Adafruit demo by entering:
 `CTRL+c` To stop the demo.
 
 To get a list of all the Neopixel functions:  
-`help(redboard)`  
+`help(neopixels)`  
 Use the arrow keys to scroll up and down, then 'q' to quit.
 
 Here's some examples to try:  
@@ -461,7 +461,7 @@ Here's some examples to try:
 
 `neopixels.knightRider()`
 
-`neopixels.knightRider_fade()` - for use with 16 pixels  
+`neopixels.knightRider_fade()` - for use with 16 neopixels  
 
 `neopixels.setColour(1,100,140,0)` - To set an individual pixel
 
