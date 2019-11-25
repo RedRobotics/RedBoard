@@ -51,6 +51,7 @@ f = (fade0,fade1,fade2,fade3,fade4,fade5,fade6,fade7,fade8,fade9,fade10,fade11,f
 
 
 # Define functions which animate LEDs in various ways.
+
 def clear():
 	for i in range(strip.numPixels()):
 		strip.setPixelColor(i,0)
@@ -61,7 +62,7 @@ def knightRider_fade(): #  Works with 16 neopixels
     while True:
         for a in range(0,14):
             for i in range(0,16):
-                strip.setPixelColorRGB(i, 0,f[a][i],0)
+                strip.setPixelColorRGB(i, f[a][i],0,0)
                 #print(i,f[a][i])            
                 strip.show()
 
@@ -73,16 +74,14 @@ def knightRider_fade(): #  Works with 16 neopixels
 def knightRider():
     while True:
         for i in range(0,strip.numPixels()-2):
-                strip.setPixelColorRGB(i, 0,255,0)  # GRB 
-                strip.setPixelColorRGB(i+1, 0,255,0)  # GRB
-                 
+                strip.setPixelColorRGB(i, 255,0,0)                   
                 strip.show()
                 time.sleep(0.1)
                 clear()
 			
         for i in range(strip.numPixels()-2,0,-1):  
-                strip.setPixelColorRGB(i, 0,255,0)
-                strip.setPixelColorRGB(i+1, 0,255,0)
+                strip.setPixelColorRGB(i, 255,0,0)
+                strip.setPixelColorRGB(i+1, 255,0,0)
                 strip.show()
                 time.sleep(0.1)
                 clear()      
@@ -98,7 +97,6 @@ def setColour(P,R,G,B):
         strip.show()
 
 
-'''
 def heartBeat():
         red = 0
         while True:
@@ -117,20 +115,7 @@ def heartBeat():
                     strip.show()
                     time.sleep(0.01)        
 
-def knightRider():
-    while True:
-        for i in range(1,strip.numPixels()-1):
-                strip.setPixelColorRGB(i, 255,0,0) 
-                strip.show()
-                time.sleep(0.1)
-                clear()
-			
-        for i in range(strip.numPixels()-1,1,-1):  
-                strip.setPixelColorRGB(i, 255,0,0)
-                strip.show()
-                time.sleep(0.1)
-                clear()
-'''
+
 
 def colorWipe(strip, color, wait_ms=50):
 	"""Wipe color across display a pixel at a time."""
