@@ -20,6 +20,12 @@ except FileNotFoundError:
     print('Enable I2C in raspi-config')
 
 # Setup GPIO
+servo_7 = 7
+servo_8 = 8
+servo_9 = 9
+servo_10 = 10
+servo_11 = 11
+
 servo_5 = 5
 servo_6 = 6
 servo_13 = 13
@@ -175,7 +181,7 @@ def readAdc_0():
         time.sleep(0.1)
         voltage0 = bus.read_i2c_block_data(address,0x00,2)
         conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-        adc = conversion_0 / 2157.5 #  Battery voltage through voltage divider
+        adc = conversion_0 / 1116 #  Battery voltage through voltage divider
         return round(adc,2)
 
     except IOError:
@@ -218,6 +224,8 @@ def readAdc_3():
 def mapServo(sPos):
     mapS = (int(sPos * 7) + 600)
     return mapS
+
+#----------------------------------------------------------
 
 def servo20(pos0):
     if pos0 >= 0 and pos0 <91:
@@ -473,8 +481,194 @@ def servo27_off():
     print ("servo27 off")
 
 
+#-----------------------------------------------------
+#-----------------------------------------------------
+ 
+def servo7(pos1):
+    if pos1 >= 0 and pos1 <91:
+        print ("servo7 =",pos1)
+        pos1 = 1500 - (pos1 * 11.1)
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_7, pos1)
+    
+    elif pos1 < 0 and pos1 >-91:
+        print ("servo7 =",pos1)
+        pos1 = (abs(pos1) * 11.1) + 1500
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_7, pos1)
+
+    else:
+        print ("Out Of Range!")
 
 #-----------------------------------------------------
+
+def servo7_P(pos1):
+    if pos1 >499 and pos1 <2501:
+        print ("servo7 =",pos1)
+        pi.set_servo_pulsewidth(servo_7, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo7_off():
+    pi.set_servo_pulsewidth(servo_7, 0)
+    print ("servo7 off")
+
+
+
+#-----------------------------------------------------
+#-----------------------------------------------------
+ 
+def servo8(pos1):
+    if pos1 >= 0 and pos1 <91:
+        print ("servo8 =",pos1)
+        pos1 = 1500 - (pos1 * 11.1)
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_8, pos1)
+    
+    elif pos1 < 0 and pos1 >-91:
+        print ("servo8 =",pos1)
+        pos1 = (abs(pos1) * 11.1) + 1500
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_8, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo8_P(pos1):
+    if pos1 >499 and pos1 <2501:
+        print ("servo8 =",pos1)
+        pi.set_servo_pulsewidth(servo_8, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo8_off():
+    pi.set_servo_pulsewidth(servo_8, 0)
+    print ("servo8 off")
+
+
+
+#-----------------------------------------------------
+#-----------------------------------------------------
+ 
+def servo9(pos1):
+    if pos1 >= 0 and pos1 <91:
+        print ("servo9 =",pos1)
+        pos1 = 1500 - (pos1 * 11.1)
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_9, pos1)
+    
+    elif pos1 < 0 and pos1 >-91:
+        print ("servo9 =",pos1)
+        pos1 = (abs(pos1) * 11.1) + 1500
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_9, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo9_P(pos1):
+    if pos1 >499 and pos1 <2501:
+        print ("servo9 =",pos1)
+        pi.set_servo_pulsewidth(servo_9, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo9_off():
+    pi.set_servo_pulsewidth(servo_9, 0)
+    print ("servo9 off")
+
+
+#-----------------------------------------------------
+#-----------------------------------------------------
+ 
+def servo10(pos1):
+    if pos1 >= 0 and pos1 <91:
+        print ("servo10 =",pos1)
+        pos1 = 1500 - (pos1 * 11.1)
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_10, pos1)
+    
+    elif pos1 < 0 and pos1 >-91:
+        print ("servo10 =",pos1)
+        pos1 = (abs(pos1) * 11.1) + 1500
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_10, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo10_P(pos1):
+    if pos1 >499 and pos1 <2501:
+        print ("servo10 =",pos1)
+        pi.set_servo_pulsewidth(servo_10, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo10_off():
+    pi.set_servo_pulsewidth(servo_10, 0)
+    print ("servo10 off")
+
+#-----------------------------------------------------
+#-----------------------------------------------------
+ 
+def servo11(pos1):
+    if pos1 >= 0 and pos1 <91:
+        print ("servo11 =",pos1)
+        pos1 = 1500 - (pos1 * 11.1)
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_11, pos1)
+    
+    elif pos1 < 0 and pos1 >-91:
+        print ("servo11 =",pos1)
+        pos1 = (abs(pos1) * 11.1) + 1500
+        #print (pos1)
+        pi.set_servo_pulsewidth(servo_11, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo11_P(pos1):
+    if pos1 >499 and pos1 <2501:
+        print ("servo11 =",pos1)
+        pi.set_servo_pulsewidth(servo_11, pos1)
+
+    else:
+        print ("Out Of Range!")
+
+#-----------------------------------------------------
+
+def servo11_off():
+    pi.set_servo_pulsewidth(servo_11, 0)
+    print ("servo11 off")
+
+
+
+#-----------------------------------------------------
+#-----------------------------------------------------
+
+
+# Motors
+
 
 def M1(lm):  
 
