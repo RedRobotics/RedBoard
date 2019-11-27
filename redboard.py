@@ -1,6 +1,6 @@
 #Python library for the Red Robotics 'RedBoard' Raspberry Pi add on robotics boards.
 #Simple python commands for controlling motors, servos and Neopixels (WS2812B).
-#Version 2 5/2/2019
+#Version 2.1 27/11/2019
 # Author: Neil Lambeth. neil@redrobotics.co.uk @NeilRedRobotics
 
 from __future__ import print_function  # Make print work with python 2 & 3
@@ -8,6 +8,7 @@ print('Please wait while modules load...')
 import time
 import pigpio
 import smbus
+import subprocess
 
 #Setup I2C
 try:
@@ -75,7 +76,7 @@ pi.set_PWM_frequency(pwmb, 1000)
 pi.set_mode(servo_20, pigpio.OUTPUT)
 pi.set_mode(servo_21, pigpio.OUTPUT)
 
-print("Redboard Library V2 loaded")
+print("Redboard Library V2.1 loaded")
 
 #-----------------------------------------------------
 
@@ -177,15 +178,13 @@ def led_off():
 
 def readAdc_0():
     try:
-        bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])
-        time.sleep(0.1)
-        voltage0 = bus.read_i2c_block_data(address,0x00,2)
-        conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-        adc = conversion_0 / 1116 #  Battery voltage through voltage divider
-        return round(adc,2)
+        cmd = "python3 /home/pi/RedBoard/system/bat_check.py"    
+        bat = float(subprocess.check_output(cmd, shell = True ).decode())
+        #print ('Battery Voltage =',bat)
+        return bat
 
     except IOError:
-        os.system('i2cdetect -y 1')
+        pass
 
 
 def readAdc_1():
