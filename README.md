@@ -43,7 +43,7 @@ When that's finished, enter:
 `curl -L https://raw.githubusercontent.com/RedRobotics/RedBoard/master/system/setup.sh | bash`
 
 This will install all the files you need. When it's finished it will ask if you want to reboot. You will have to reboot for the changes to take effect.  
-If you are not prompted to reboot, something went wrong. simply run the installer again (It may take a few attempts!).
+If you are not prompted to reboot, something went wrong. Simply run the installer again (It may take a few attempts!).
 
 If you install this way you can skip down to What's my IP address?  
 
