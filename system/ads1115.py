@@ -64,7 +64,7 @@ volts_1 = conversion_1 / ADC_conversion_Value # 3.3 Volts
 if conversion_1 > 65530:  # Show 0 volts if connected to ground
 	volts_1 = 0.00
 
-#print (conversion)
+#print (conversion_1)
 print ('A1 Voltage =',round(volts_1,2))
 
 
@@ -77,7 +77,7 @@ volts_2 = conversion_2 / ADC_conversion_Value # 3.3 Volts
 if conversion_2 > 65530:  # Show 0 volts if connected to ground
 	volts_2 = 0.00
 
-#print (conversion)
+#print (conversion_2)
 print ('A2 Voltage =',round(volts_2,2))
 
 
@@ -90,7 +90,7 @@ volts_3 = conversion_3 / ADC_conversion_Value # 3.3 Volts
 if conversion_3 > 65530:  # Show 0 volts if connected to ground
 	volts_3 = 0.00
 
-#print (conversion)
+#print (conversion_3)
 print ('A3 Voltage =',round(volts_3,2))
 
     
