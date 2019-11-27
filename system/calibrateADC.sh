@@ -7,29 +7,6 @@ echo Press [Enter] once you have typed in your measurement.
   
 while read battery
  
-#do
-
-#    if [[ "$battery" =~ ^-?[0-9]+[.,]?[0-9]*$ ]]
-#    then
-#        if (( $battery < 7 )); then
-#            echo Please enter a number between 7-24.
-
-#        elif (( $battery > 24 )); then
-#            echo Please enter a number between 7-24.
-        
-#        else
-#            break        
-
-#        fi
-
-#    else        
-#        echo Please enter a number between 7-24.
-#    fi
-#done
-
-
-
-
 do
 
     if [[ "$battery" =~ ^-?[7-9]|1[0-9]|2[0-4]+[.,]?[0-9]*$ ]]
@@ -37,7 +14,8 @@ do
         break
     else
         echo Please enter a number between 7-24.
-fi
+    fi
+
 done
 
 
@@ -53,7 +31,7 @@ num1=$(python -c "print round($num)")
 
 echo Calibration value = $num1
 
-#sed -i "/Value =/c\ADC_bat_conversion_Value = ${num1}" /home/pi/RedBoard/system/bat_check.py
+sed -i "/Value =/c\ADC_bat_conversion_Value = ${num1}" /home/pi/RedBoard/system/bat_check.py
 
 echo ADC calibrated successfully!
 echo
