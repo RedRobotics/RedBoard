@@ -14,6 +14,7 @@ import time
 import os
 import pigpio
 import smbus
+import subprocess
 
 redLed = 26
 greenLed = 16
@@ -68,17 +69,16 @@ def test_i2c():
     bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])
 
 def readAdc():
+
+    
     try:
-        bus.write_i2c_block_data(address, 0x01, [0xc3, 0x83])
-        time.sleep(0.1)
-        voltage0 = bus.read_i2c_block_data(address,0x00,2)
-        conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-        adc = conversion_0 / 1116 #  Battery voltage through voltage divider
-        return adc
+        cmd = "python3 /home/pi/RedBoard/system/bat_check.py"    
+        bat = float(subprocess.check_output(cmd, shell = True ).decode())      
+        return bat
+
     except IOError:
-        os.system('i2cdetect -y 1')
-        
-        
+        pass
+    
 
 def flashLed():
     toggle = False
@@ -197,13 +197,13 @@ while True:
         #print ('Voltage =',round(volts_0,2))
         
         bat[avgCount] = volts_0 
-        print (bat[avgCount]) 
+        #print (bat[avgCount]) 
   
         if avgCount == 3: #  Get the average battery level over 6 seconds
             avgCount = 0 
             l = (len(bat))
             batAvg = (sum(bat)/(l-1))
-            print(batAvg)
+            #print(batAvg)
 
             # Show average battery level on RGB Led 
             # But not if you're pressing the button
