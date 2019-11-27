@@ -2,9 +2,15 @@
 # Author: Neil Lambeth. neil@redrobotics.co.uk @NeilRedRobotics
 
 
+
 import smbus
 import time
 import os
+import subprocess
+
+
+ADC_conversion_Value = 8000  # Conversion value for 3.3Volts
+
 
 bus = smbus.SMBus(1)
 address = 0x48
@@ -44,28 +50,21 @@ voltage3 = readAdc_3()
 
 # Battery Voltage
 
-#print (voltage0[0])
-#print (voltage0[1])
-conversion_0 = (voltage0[1])+(voltage0[0]<<8)
-volts_0 = conversion_0 / 1116  # Battery voltage through voltage divider #2159 - V0.2
-
-if conversion_0 > 65530:  # Show 0 volts if connected to ground
-	volts_0 = 0.00
-
-#print (conversion_0)
-print ('Battery Voltage =',round(volts_0,2))
+cmd = "python3 /home/pi/RedBoard/system/bat_check.py"    
+bat = float(subprocess.check_output(cmd, shell = True ).decode())
+print ('Battery Voltage =',bat)
 
 
 
 # A1 Voltage
 
 conversion_1 = (voltage1[1])+(voltage1[0]<<8)
-volts_1 = conversion_1 / 8000 # 3.3 Volts
+volts_1 = conversion_1 / ADC_conversion_Value # 3.3 Volts
 
 if conversion_1 > 65530:  # Show 0 volts if connected to ground
 	volts_1 = 0.00
 
-#print (conversion_1)
+#print (conversion)
 print ('A1 Voltage =',round(volts_1,2))
 
 
@@ -73,12 +72,12 @@ print ('A1 Voltage =',round(volts_1,2))
 # A2 Voltage
 
 conversion_2 = (voltage2[1])+(voltage2[0]<<8)
-volts_2 = conversion_2 / 8000 # 3.3 Volts
+volts_2 = conversion_2 / ADC_conversion_Value # 3.3 Volts
 
 if conversion_2 > 65530:  # Show 0 volts if connected to ground
 	volts_2 = 0.00
 
-#print (conversion_2)
+#print (conversion)
 print ('A2 Voltage =',round(volts_2,2))
 
 
@@ -86,12 +85,12 @@ print ('A2 Voltage =',round(volts_2,2))
 # A3 Voltage
 
 conversion_3 = (voltage3[1])+(voltage3[0]<<8)
-volts_3 = conversion_3 / 8000 # 3.3 Volts
+volts_3 = conversion_3 / ADC_conversion_Value # 3.3 Volts
 
 if conversion_3 > 65530:  # Show 0 volts if connected to ground
 	volts_3 = 0.00
 
-#print (conversion_3)
+#print (conversion)
 print ('A3 Voltage =',round(volts_3,2))
 
     
