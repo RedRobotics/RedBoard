@@ -47,6 +47,8 @@ If you are not prompted to reboot, something went wrong. Simply run the installe
 
 If you install this way you can skip down to What's my IP address?  
 
+You can also use the installer to update the RedBoard library, but it will replace the Redoard directory - so backup your files first!  
+
 ## Pre-configured SD Image:
 
 Download the pre-configured SD card Image onto your PC from [here.](https://drive.google.com/open?id=1CVyusdQVloAlMSNnSo6dqUdGsPXhNg5B)  
