@@ -263,7 +263,14 @@ The servo power pins will be at 7.4 volts, do not plug 5 volt devices into them.
 
 ## Battery Monitoring
 
-Battery monitoring is turned off by default. This is because I've only created profiles for 2S (7.4v) and 3S (11.1v) Lipo batteries. I'll add more profiles soon.
+The RedBoard+ has a 4 channel analogue to digital conveter ([ADS1X15](http://www.ti.com/lit/ds/symlink/ads1015.pdf)).  
+The first channel (channel_0) is used to measure the battery voltage (through a [voltage divider](https://en.wikipedia.org/wiki/Voltage_divider)).
+
+You can check the battery voltage by running:
+
+`python3 /system/bat_check.py`
+
+RGB LED Battery monitoring is turned off by default. This is because I've only created profiles for 2S (7.4v) and 3S (11.1v) Lipo batteries. I'll add more profiles soon.
 
 If you are using a 2S or 3S Lipo, you can enable battery monitoring. This shows the battery level on the RGB led. 
 
@@ -300,6 +307,32 @@ Red = Low
 Flashing Red = Critical
 
 Critical battery auto shutdown coming soon.
+
+## ADC Calibration
+
+If the battery measurement seems a little off, you can recalibrate it yourself.
+
+You'll just need a multimeter.
+
+![ADC](https://github.com/RedRobotics/RedBoard/blob/images/ADC_Calibrate.png)
+
+With the Pi switched on, measure the voltage at the battery terminals.
+
+Then from the RedBoard directory type:
+
+`system/./calibrateADC.sh` - Hit Enter
+
+At the prompt enter the voltage measurement from your multimeter.
+
+In the example above, the voltage reading is 11.1 volts. So enter `11.1`
+
+You can enter up to 2 decimal places.
+
+That's it!
+
+You should see a new battery reading which matches your multimeter reading.
+
+
 
 ## Auto Starting Programs
 
@@ -428,6 +461,10 @@ To measure a voltage on the other three channels - pins A1,A2,A3
 `readAdc_2()`
 
 `readAdc_0()`
+
+If you have the OLED screen attached, It's best to disable or disconnect it, as it may affect these ADC readings.
+
+
 
 ## Neopixels
 
