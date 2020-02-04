@@ -448,21 +448,30 @@ Cut the power to the servo with:
 `redboard.servo20_off()`
 
 ## GPIO  
-You can directly read and set the levels of the GPIO pins, the pin numbers are marked directly on the RedBoard+.   
-
-Set pin 5 as an input:  
-`redboard.input_pin(5)`  
+You can directly read and set the levels of the GPIO pins, the pin numbers are marked directly on the RedBoard+.    
 
 Set pin 6 as an output:  
 `redboard.output_pin(6)`  
 
-The Raspberry Pi has built in pull-up and pull-down resistors, more info [here](https://en.wikipedia.org/wiki/Pull-up_resistor)  
+To set the level of pin 6 to high:  
+`redboard.setPin(6,1)`  
+  
+To set the level of pin 6 to low:  
+`redboard.setPin(6,0)`  
+  
+Set pin 5 as an input:  
+`redboard.input_pin(5)`   
+  
+The Raspberry Pi has built in pull-up and pull-down resistors, more info [here](https://en.wikipedia.org/wiki/Pull-up_resistor).  
 
 To pull-up pin 5:  
 `redboard.pull_up(5)` 
 
 To pull-down pin 5:  
 `redboard.pull_down(5)`  
+
+To read the level of pin 5:  
+`redboard.readPin(5)`  
 
 
 ## ADC
