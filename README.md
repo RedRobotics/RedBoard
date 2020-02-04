@@ -457,6 +457,7 @@ Set pin 6 as an output:
 `redboard.output_pin(6)`  
 
 The Raspberry Pi has built in pull-up and pull-down resistors, more info [here](https://en.wikipedia.org/wiki/Pull-up_resistor)  
+
 To pull-up pin 5:  
 `redboard.pull_up(5)` 
 
@@ -479,7 +480,7 @@ To measure a voltage on the other three channels - pins A1,A2,A3
 
 `readAdc_2()`
 
-`readAdc_0()`
+`readAdc_3()`
 
 If you have the OLED screen attached, It's best to disable or disconnect it, as it may affect these ADC readings.
 
