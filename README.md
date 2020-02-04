@@ -62,6 +62,8 @@ Write the image to a SD Card using Etcher, free download [here](https://www.bale
 
 When it's finished eject the SD card but insert it straight back into your PC.
 
+The pre-configured SD Image is not as up to date as the files on Github.  
+You can update it by running the installation script above.
 
 ## Set up WiFi:
 
