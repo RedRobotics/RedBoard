@@ -7,7 +7,7 @@ Works with Python 2 or 3.
  
 # This guide is a work in progress!
 
-Control a robot with a variety of controllers with example code for Rock Candy and PiHut PS3 Gamepads. PS4 coming soon! 
+Control a robot with a variety of controllers with example code for Rock Candy, PiHut PS3 and PS4 Gamepads. 
 Get a robot up and running in minutes!  
 
 ![Connection Guide](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_Guide.png)
@@ -176,7 +176,6 @@ If your robot goes in the wrong direction, you may need to swap over the wires t
 
 If you have a [RockCandy](https://www.amazon.co.uk/Rock-Candy-Wireless-Controller-Red/dp/B00G6CLXRK/ref=sr_1_3?ie=UTF8&qid=1518395269&sr=8-3&keywords=rock+candy+ps3) or [PiHut](https://thepihut.com/products/raspberry-pi-compatible-wireless-gamepad-controller) PS3 controller, you can run the tanksteer.py or carsteer.py programs. They work with either controller.  
 
-
 ### Important! 
 ### The Redboard+ is designed to work with a headless Raspberry Pi - If you have a USB keyboard or mouse plugged in, the following programs will not work (without modification). Please unplug all USB input devices except the gamepad dongle and connect via ssh (see above).
 
@@ -187,6 +186,17 @@ Tanksteer controls the robot like a tank, the left analogue stick controls the l
 Carsteer is like a traditional RC Car controller, the left stick controls the speed of both motors - push up to go forwards and down for backwards. The right stick is for steering - push the stick left or right to steer.
 
 `python3 carsteer.py`
+
+### PS4 controller  
+
+You have to pair the Bluetooth PS4 controller to your Raspberry Pi first. Here's a [guide](https://pimylifeup.com/raspberry-pi-playstation-controllers/) on how to do it.  
+
+To use a PS4 controller to control a robot, run the ps4.py program. It works the same as carsteer.py:
+  
+`python3 ps4.py`
+
+Make sure you don't have any other usb input devices plugged in at the same time!
+
 
 ### Advanced robot example
 `sudo python3 robot.py` - You'll need 'sudo' if you want to use Neopixels. 
@@ -448,7 +458,7 @@ Cut the power to the servo with:
 `redboard.servo20_off()`
 
 ## GPIO  
-You can directly read and set the levels of the GPIO pins, the pin numbers are marked directly on the RedBoard+.    
+You can directly read and set the levels of the GPIO pins, the pin numbers are marked on the RedBoard+.    
 
 Set pin 6 as an output:  
 `redboard.output_pin(6)`  
