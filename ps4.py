@@ -8,7 +8,7 @@ from __future__ import print_function  # Make print work with python 2 & 3
 from evdev import InputDevice, ecodes
 import redboard
 
-dev = InputDevice('/dev/input/event3')
+dev = InputDevice('/dev/input/event2')
 print(dev)
 
 #device = str(dev).find('Wireless Controller') 
