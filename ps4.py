@@ -9,11 +9,11 @@ from evdev import InputDevice, ecodes
 import redboard
 
 dev = InputDevice('/dev/input/event2')
-print(dev)
+#print(dev)
 
-#device = str(dev).find('Wireless Controller') 
-#if device != -1:
-#    print ('Controller: Clone PS4 Gamepad')
+device = str(dev).find('Wireless Controller')
+if device != -1:
+    print ('Controller: PS4 Gamepad')
 
 # Map buttons
 triangle, x, square, circle = 307, 304, 308, 305
@@ -92,9 +92,6 @@ for event in dev.read_loop():
 
 
     if event.type == ecodes.EV_ABS:
-        print('')
-        print('---------------------------------')
-
 
         # Dpad
         if event.code == 16:
@@ -131,12 +128,16 @@ for event in dev.read_loop():
             if LY < 128:  # Forwards
                 LeftY = 127 - LY
                 #print('LY =',LY)
+                if LeftY < 5:  # Deadband
+                    LeftY = 0
                 #print('LeftY = ',LeftY)
 
             elif LY >= 128:  # Backwards
                 LeftY = LY - 128
                 LeftY = -LeftY  # Make negative
                 #print('LY =',LY)
+                if LeftY > -5:  # Deadband
+                    LeftY = 0
                 #print('LeftY = ',LeftY)
 
 
@@ -145,24 +146,33 @@ for event in dev.read_loop():
             LX = event.value
             if LX < 128:  # Left
                 L_Left = 127 - LX
-                print ('L_Left = ',L_Left)
+                if L_Left > 5:
+                    #print ('L_Left = ',L_Left)
+                    pass
 
             elif LX >= 127:  # Right
                 L_Right = LX - 128
-                print ('L_Right = ',L_Right)
-
+                if L_Right > 5:
+                    #print ('L_Right = ',L_Right)
+                    pass
 
         elif event.code == 4:#5  # Right analogue Vertical stick
 
             RY = event.value
             if RY <= 128:  # Forwards
                 R_Fwd = 127 - RY
-                print ('R_Fwd = ',R_Fwd)
+                if R_Fwd > 5:
+                    #R_Fwd = 0
+                    #print ('R_Fwd = ',R_Fwd)
+                    pass
 
             elif RY >= 127:  # Backwards
                 R_Fwd = RY - 128
                 R_Fwd = -R_Fwd  # Make negative
-                print ('R_Rev = ',R_Fwd)
+                if R_Fwd < -5:
+                    #R_Fwd = 0
+                    #print ('R_Rev = ',R_Fwd)
+                    pass
 
 
 
@@ -184,7 +194,7 @@ for event in dev.read_loop():
                 #print('RX = ',RX)
                 #print('RightX_Right = ',RightX_R)
 
-            if RX == 128:  # Make sure both values are zero if stick is in the centre
+            if RX < 135 and RX >120:  # Make sure both values are zero if stick is in the centre
                 RightX_L = 0
                 RightX_R = 0
 
@@ -201,8 +211,8 @@ for event in dev.read_loop():
                 Rightmotor = -RightX_R  # Reverse motor to turn on the spot
 
 
-        elif LY <= 128:  # Forwards
-            print ('Forwards')
+        elif LY <= 123: #128  # Forwards
+            #print ('Forwards')
             Leftmotor = LeftY - RightX_L  # Mix steering values
             if Leftmotor <1:  # Stop motor going backwards
                 Leftmotor = 0;
@@ -210,17 +220,14 @@ for event in dev.read_loop():
             if Rightmotor <1:  # Stop motor going backwards
                 Rightmotor = 0;
 
-        elif LY >= 127:  # Backwards
-            print('Backwards')
+        elif LY >= 133: #127  # Backwards
+            #print('Backwards')
             Leftmotor = LeftY + RightX_L  # Mix steering values
             if Leftmotor >-1:  # Stop motor going forwards
                 Leftmotor = 0;
             Rightmotor = LeftY + RightX_R   # Mix steering values
             if Rightmotor >-1:  # Stop motor going forwards
                 Rightmotor = 0;
-
-
-
 
 
     if turbo == True:  # Double speed for turbo
@@ -233,8 +240,11 @@ for event in dev.read_loop():
         RM = Rightmotor
 
     if LM != LM_OLD or RM != RM_OLD:  # Only print motor speeds if they have changed
+        print ('')
         print ('Left motor  =',LM)
         print ('Right motor =',RM)
+        print ('-----------------------------------')
+        pass
 
     LM_OLD = LM
     RM_OLD = RM
