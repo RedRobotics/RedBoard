@@ -17,7 +17,7 @@ This guide assumes a working knowledge of the Raspberry Pi, how to set one up he
 Here's a great guide on how to do it from [Adafruit](https://learn.adafruit.com/raspberry-pi-zero-creation/overview).
 
 
-## Installaltion:
+## Installation:
 See below for the pre-configured SD Card Image (This is the easiest way to get up and running).  
 
 Or follow these instructions to install everything yourself.  
