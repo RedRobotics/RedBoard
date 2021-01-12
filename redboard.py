@@ -1,6 +1,6 @@
 #Python library for the Red Robotics 'RedBoard' Raspberry Pi add on robotics boards.
 #Simple python commands for controlling motors, servos and Neopixels (WS2812B).
-#Version 2.1 27/11/2019
+#Version 2.2 12/01/2021
 # Author: Neil Lambeth. neil@redrobotics.co.uk @NeilRedRobotics
 
 from __future__ import print_function  # Make print work with python 2 & 3
@@ -58,6 +58,18 @@ LM = 0
 
 INPUT = 1
 OUTPUT = 0
+
+#MX2
+MX2_address = 0x30
+motor3 = 0x30
+motor4 = 0x40
+speed3 = 0
+speed4 = 0
+speed = 0
+fwd = 1
+rev = 0
+dir3 = 0
+dir4 = 0
 
 pi = pigpio.pi()
  
@@ -219,10 +231,16 @@ def readAdc_3():
 
 # Servos
 
-
 def mapServo(sPos):
     mapS = (int(sPos * 7) + 600)
     return mapS
+
+# New Map Servo
+def mServo(sPin,sPos, min = 600, max = 2400):
+    mapS = (sPos/255)
+    mapS = int((mapS * (max-min)+min))
+    pi.set_servo_pulsewidth(sPin, mapS)
+    print("Servo",sPin,"=",mapS)
 
 #----------------------------------------------------------
 
@@ -791,7 +809,51 @@ def M2_8bit(rm):
             pi.set_PWM_dutycycle(pwma,RM)   
   
 #-----------------------------------------------------          
-            
+       
+# MX2
+
+def M3(speed3):
+    if speed3 >= 0:  # Forwards
+        print('Forwards')
+        dir3 = 1
+
+    elif speed3 < 0:  # Backwards
+        print('Backwards')
+        speed3 = abs(speed3)  # Make positive
+        dir3 = 0
+        print (speed3)
+
+    try:
+        bus.write_i2c_block_data(MX2_address, motor3, [dir3, speed3])
+        pass
+    except OSError:
+        print('Error-------------------------------------------------------')
+        pass
+
+#-----------------------------------------------------
+
+def M4(speed4):
+
+    if speed4 >= 0:  # Forwards
+        print('Forwards')
+        dir4 = 1
+
+    elif speed4 < 0:  # Backwards
+        print('Backwards')
+        speed4 = abs(speed4)  # Make positive
+        dir4 = 0
+        print (speed4)
+
+    try:
+        bus.write_i2c_block_data(MX2_address, motor4, [dir4, speed4])
+    except OSError:
+        print('Error-------------------------------------------------------')
+        pass
+
+#-----------------------------------------------------
+    
+    
+    
 def Stop(): 
             pi.set_PWM_dutycycle(pwma,0)
             pi.set_PWM_dutycycle(pwmb,0)
