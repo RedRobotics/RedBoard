@@ -3,7 +3,7 @@ Python library for the RedBoard+ - Raspberry Pi Robotics Controller.
 
 Simple python commands for controlling motors, servos and Neopixels (WS2812B).
 
-Works with Python 2 or 3.
+Works with Python 3.
  
 # This guide is a work in progress!
 
@@ -101,7 +101,7 @@ The RedBoard+ will provide power to the Raspberry Pi (If you have connected a ba
 ## DO NOT power the Raspberry Pi by its USB port and a battery at the same time.
 
 
-Now turn on your PI. You are ready to make a robot!
+Now turn on your Pi. You are ready to make a robot!
 
 ## What's my IP address?
 If you have successfully connected to a wireless network, once your Pi has booted up it will flash the last three digits of it's IP address on the on-board RGB LED.  
