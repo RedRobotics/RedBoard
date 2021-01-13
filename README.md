@@ -132,7 +132,15 @@ Then hit the 'Enter' key.
 
 
 The highlighted text shows the IPv4 address, take the first three sets of digits then add the number as shown on the RGB LED.
-If the RGB LED flashed red once, green once and blue twice, your PI's IP address would be: 192.168.31.112
+If the RGB LED flashed red once, green once and blue twice, your PI's IP address would be: 192.168.31.112  
+
+---
+
+Tom Oinn has forked the RedBoard library and added some very neat features.  
+Head over to [ApproxEng](https://github.com/ApproxEng/RedBoard) and check out his RedBoard console, it's a great tool for setting up your motors and servos. 
+![ipconfig](https://github.com/RedRobotics/RedBoard/blob/images/RedBoard%2B%20Console.JPG)  
+
+
 
 ## Quick Start Guide To Controlling A Robot
 
@@ -144,7 +152,7 @@ Here's an image to show you how to wire up your bot:
 ![Simple Robot](https://github.com/RedRobotics/RedBoard/blob/images/Redboard_SimpleRobot.png)
 
 
-The Headboard can drive two motors independently, at 6 Amps each continuously.  
+The Redboard+ can drive two motors independently, at 6 Amps each continuously.  
 
 Once your battery pack and motors are wired up, it's easy to start controlling your bot. 
 
