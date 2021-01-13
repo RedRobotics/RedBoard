@@ -1,4 +1,5 @@
 # Control a mecanum wheel robot with a Rock Candy or PiHut PS3 controller.
+# Requires the RedBoard+ and MX2 add-on board.
 # The left stick controls the speed and direction of both motors - push up to go forwards and down for backwards.
 # The right stick is for steering - push the stick left or right to steer.
 # Toggle L1 to switch between normal and straif steering.
