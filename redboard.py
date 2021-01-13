@@ -812,6 +812,35 @@ def M2_8bit(rm):
        
 # MX2
 
+def M3(speed3):
+
+    if speed3 > 100:  # Make sure the value sent to the motor is 100 or less
+        print("Out of range")
+        speed3 = 100
+
+    elif speed3 < -100:  # Make sure the value sent to the motor is 100 or less
+        print("Out of range")
+        speed3 = -100
+
+    speed3 = int(speed3 * 2.55)
+
+    if speed3 >= 0:  # Forwards
+        print('Forwards')
+        dir3 = 1
+
+    elif speed3 < 0:  # Backwards
+        print('Backwards')
+        speed3 = abs(speed3)  # Make positive
+        dir3 = 0
+        print (speed3)
+
+    try:
+        bus.write_i2c_block_data(MX2_address, motor3, [dir3, speed3])
+    except OSError:
+        print('Error-------------------------------------------------------')
+        pass
+
+
 def M3_8bit(speed3):
     
     if speed3 > 255:  # Make sure the value sent to the motor is 255 or less
@@ -840,6 +869,36 @@ def M3_8bit(speed3):
         pass
 
 #-----------------------------------------------------
+
+def M4(speed4):
+
+    if speed4 > 100:  # Make sure the value sent to the motor is 100 or less
+        print("Out of range")
+        speed4 = 100
+
+    elif speed4 < -100:  # Make sure the value sent to the motor is 100 or less
+        print("Out of range")
+        speed4 = -100
+
+    speed4 = int(speed4 * 2.55)
+
+    if speed4 >= 0:  # Forwards
+        print('Forwards')
+        dir4 = 1
+
+    elif speed4 < 0:  # Backwards
+        print('Backwards')
+        speed4 = abs(speed4)  # Make positive
+        dir4 = 0
+        print (speed4)
+
+    try:
+        bus.write_i2c_block_data(MX2_address, motor4, [dir4, speed4])
+    except OSError:
+        print('Error-------------------------------------------------------')
+        pass
+
+
 
 def M4_8bit(speed4):
     
