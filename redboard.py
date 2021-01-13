@@ -812,7 +812,16 @@ def M2_8bit(rm):
        
 # MX2
 
-def M3(speed3):
+def M3_8bit(speed3):
+    
+    if speed3 > 255:  # Make sure the value sent to the motor is 255 or less
+        print("Out of range")
+        speed3 = 255
+
+    elif speed3 < -255:  # Make sure the value sent to the motor is 255 or less
+        print("Out of range")
+        speed3 = -255
+    
     if speed3 >= 0:  # Forwards
         print('Forwards')
         dir3 = 1
@@ -832,7 +841,15 @@ def M3(speed3):
 
 #-----------------------------------------------------
 
-def M4(speed4):
+def M4_8bit(speed4):
+    
+    if speed4 > 255:  # Make sure the value sent to the motor is 255 or less
+        print("Out of range")
+        speed4 = 255
+
+    elif speed4 < -255:  # Make sure the value sent to the motor is 255 or less
+        print("Out of range")
+        speed4 = -255
 
     if speed4 >= 0:  # Forwards
         print('Forwards')
