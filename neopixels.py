@@ -195,5 +195,8 @@ def demo():
 # Create NeoPixel object with appropriate configuration.
 strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL, LED_STRIP)
 # Intialize the library (must be called once before other functions).
-strip.begin()
+try:
+	strip.begin()
+except RuntimeError:
+	print('You need "sudo python3" to use neopixels!')
 
