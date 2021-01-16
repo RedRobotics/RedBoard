@@ -259,16 +259,16 @@ for event in dev.read_loop():
             print('Straif steering')
             redboard.M2_8bit(RM)
             redboard.M1_8bit(LM)
-            redboard.M3(RM)
-            redboard.M4(LM)
+            redboard.M3_8bit(RM)
+            redboard.M4_8bit(LM)
 
         else:  # Normal steering controls
             pass
             print('Normal steering')
             redboard.M1_8bit(LM)
             redboard.M2_8bit(RM)
-            redboard.M3(LM)
-            redboard.M4(RM)
+            redboard.M3_8bit(LM)
+            redboard.M4_8bit(RM)
 
     LM_OLD = LM
     RM_OLD = RM
