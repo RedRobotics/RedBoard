@@ -262,8 +262,7 @@ for event in dev.read_loop():
             redboard.M3_8bit(RM)
             redboard.M4_8bit(LM)
 
-        else:  # Normal steering controls
-            pass
+        else:  # Normal steering control
             print('Normal steering')
             redboard.M1_8bit(LM)
             redboard.M2_8bit(RM)
